@@ -1,0 +1,25 @@
+div {
+  margin: 20px auto;
+  width: 500px;
+}
+div h3 {
+  text-align: center;
+}
+.btn-other {
+  background: #F40009;
+  color: white;
+  border-radius: 10px;
+  border: 2px solid #F40009;
+  font-weight: 500;
+  transition-duration: 0.4s;
+  padding: 10px;
+  opacity: 0.8;
+  width: 200px;
+}
+.btn-other:hover,
+.btn-other:focus {
+  background: white;
+  color: #F40009;
+  outline: none;
+}
+/*# sourceMappingURL=contact.component.css.map */
