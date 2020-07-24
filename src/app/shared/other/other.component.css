@@ -4,19 +4,11 @@ div {
 div p {
   margin: 50px;
 }
-.btn-other {
-  background: #F40009;
-  color: white;
-  border-radius: 10px;
-  border: 2px solid #F40009;
-  font-weight: 500;
-  transition-duration: 0.4s;
-  padding: 10px;
-  opacity: 0.8;
+.btn {
   width: 200px;
 }
-.btn-other:hover,
-.btn-other:focus {
+.btn:hover,
+.btn:focus {
   background: white;
   color: #F40009;
   outline: none;

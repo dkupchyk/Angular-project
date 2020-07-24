@@ -9,7 +9,8 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 export class ContactComponent implements OnInit {
   contactForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.contactForm = this.formBuilder.group({
@@ -22,11 +23,9 @@ export class ContactComponent implements OnInit {
 
     this.contactForm.get('checkAge').valueChanges
       .subscribe(value => {
-        console.log(value);
         if (value) {
           this.contactForm.addControl('age', new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+[0-9]*$/)]));
         } else {
-          this.contactForm.get('age').clearValidators();
           this.contactForm.removeControl('age');
         }
         this.contactForm.updateValueAndValidity();
