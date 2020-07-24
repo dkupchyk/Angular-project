@@ -1,6 +1,7 @@
 @primary-red-color: #F40009;
 
-div {
+#contact-section {
+  overflow-x: hidden;
   margin: 20px auto;
   width: 500px;
 
@@ -9,22 +10,11 @@ div {
   }
 }
 
-.btn-other {
-  background: @primary-red-color;
-  color: white;
-  border-radius: 10px;
-  border: 2px solid @primary-red-color;
-  font-weight: 500;
-  transition-duration: 0.4s;
-  padding: 10px;
-  opacity: 0.8;
+.btn-danger {
   width: 200px;
 }
 
-.btn-other:hover,
-.btn-other:focus {
-  background: white;
-  color: @primary-red-color;
-  outline: none;
+input.ng-invalid.ng-touched {
+  border: 1px solid @primary-red-color;
 }
 
