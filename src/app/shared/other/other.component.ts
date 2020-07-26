@@ -8,8 +8,7 @@ import {HIDE_TEXT_CONSTANT, SHOW_TEXT_CONSTANT} from './constants/content.consta
 })
 export class OtherComponent implements OnInit {
   buttonClicked = false;
-  hideText = HIDE_TEXT_CONSTANT;
-  showText = SHOW_TEXT_CONSTANT;
+  buttonText = HIDE_TEXT_CONSTANT;
 
   constructor() {
   }
@@ -17,7 +16,10 @@ export class OtherComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onButtonClicked() {
+  onButtonClicked(): void {
     this.buttonClicked = !this.buttonClicked;
+    this.buttonClicked
+      ? this.buttonText = HIDE_TEXT_CONSTANT
+      : this.buttonText = SHOW_TEXT_CONSTANT;
   }
 }
