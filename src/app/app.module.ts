@@ -3,24 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import { HomeComponent } from './home/home.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { OtherComponent } from './shared/other/other.component';
-import { ContactComponent } from './shared/contact/contact.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {HomeModule} from './home/home.module';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    OtherComponent,
-    ContactComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    HomeModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

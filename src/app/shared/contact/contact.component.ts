@@ -13,6 +13,11 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initForm();
+    this.formChanges();
+  }
+
+  initForm(): void {
     this.contactForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -20,21 +25,20 @@ export class ContactComponent implements OnInit {
       message: ['', Validators.required],
       checkAge: [false]
     });
+  }
 
+  formChanges(): void {
     this.contactForm.get('checkAge').valueChanges
       .subscribe(value => {
-        if (value) {
-          this.contactForm.addControl('age', new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+[0-9]*$/)]));
-        } else {
-          this.contactForm.removeControl('age');
-        }
+        value
+          ? this.contactForm.addControl('age', new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+[0-9]*$/)]))
+          : this.contactForm.removeControl('age');
         this.contactForm.updateValueAndValidity();
       });
   }
 
-  resetForm() {
+  resetForm(): void {
     this.contactForm.reset();
   }
-
 
 }
