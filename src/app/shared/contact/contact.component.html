@@ -1,0 +1,106 @@
+<div id="contact-section">
+  <h3>Contact us</h3>
+
+  <form [formGroup]="contactForm">
+    <div class="form-group">
+      <label for="name">Full name</label>
+      <input id="name"
+             type="text"
+             class="form-control"
+             formControlName="name">
+      <span *ngIf="!contactForm.get('name').valid && contactForm.get('name').touched"
+            class="text-muted">
+        Please enter your full name!
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input id="email"
+             type="text"
+             class="form-control"
+             formControlName="email">
+      <span *ngIf="!contactForm.get('email').valid && contactForm.get('email').touched"
+            class="text-muted">
+        Please enter valid email address!
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="topic">Topic</label>
+      <input id="topic"
+             type="text"
+             class="form-control"
+             formControlName="topic">
+      <span *ngIf="!contactForm.get('topic').valid && contactForm.get('topic').touched"
+            class="text-muted">
+        Please enter a topic!
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="message">Message</label>
+      <textarea id="message"
+                type="text"
+                class="form-control"
+                rows="3"
+                formControlName="message">
+      </textarea>
+      <span *ngIf="!contactForm.get('message').valid && contactForm.get('message').touched"
+            class="text-muted">
+        Please enter your message!
+      </span>
+    </div>
+
+    <div class="form-group">
+      <input type="checkbox"
+             id="checkAge"
+             name="checkAge"
+             style="margin-right: 10px"
+             formControlName="checkAge">
+      <label for="checkAge">Enter your age</label>
+      <div *ngIf="contactForm.get('checkAge').value">
+        <label for="age">Age</label>
+        <input id="age"
+               type="number"
+               class="form-control"
+               formControlName="age">
+        <span *ngIf="!contactForm.get('age').valid && contactForm.get('age').touched"
+              class="text-muted">
+        Please enter your age!
+      </span>
+      </div>
+    </div>
+    <button type="submit"
+            class="btn btn-danger"
+            [disabled]="!contactForm.valid"
+            data-toggle="modal"
+            data-target="#resultModal">
+      Submit
+    </button>
+  </form>
+
+  <div class="modal fade"
+       id="resultModal"
+       tabindex="-1"
+       role="dialog"
+       aria-labelledby="resultModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="resultModalLabel">Your data</h5>
+        </div>
+        <div class="modal-body">
+          <p>Full name: {{contactForm.get('name').value}}</p>
+          <p>Email: {{contactForm.get('email').value}}</p>
+          <p>Topic: {{contactForm.get('topic').value}}</p>
+          <p>Message: {{contactForm.get('message').value}}</p>
+          <p *ngIf="contactForm.get('checkAge').value">Age: {{contactForm.get('age').value}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="resetForm()">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

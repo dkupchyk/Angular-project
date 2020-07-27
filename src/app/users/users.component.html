@@ -1,0 +1,30 @@
+<div align="center" style="margin: 20px 50px">
+  <button class="btn btn-danger"
+          type="button"
+          (click)="onButtonClicked()"
+          style="margin: 30px">
+    Show {{ isFiltered ? 'unfiltered' : 'filtered'}} users
+  </button>
+
+  <table class="table">
+    <thead class="thead-light">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">First name</th>
+      <th scope="col">Last name</th>
+      <th scope="col">City</th>
+      <th scope="col">Age</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let user of usersArray; let id = index;">
+    <tr>
+      <th>{{ id }}</th>
+      <td>{{ user.firstName }}</td>
+      <td>{{ user.lastName }}</td>
+      <td>{{ user.city }}</td>
+      <td>{{ user.age }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,16 @@
+div {
+  margin: 50px 0;
+}
+div p {
+  margin: 50px;
+}
+.btn {
+  width: 200px;
+}
+.btn:hover,
+.btn:focus {
+  background: white;
+  color: #F40009;
+  outline: none;
+}
+/*# sourceMappingURL=other.component.css.map */

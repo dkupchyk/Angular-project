@@ -1,0 +1,19 @@
+@primary-red-color: #F40009;
+
+div {
+  margin: 50px 0;
+  & p {
+    margin: 50px;
+  }
+}
+
+.btn {
+  width: 200px;
+
+  &:hover,
+  &:focus {
+    background: white;
+    color: @primary-red-color;
+    outline: none;
+  }
+}

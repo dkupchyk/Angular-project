@@ -1,0 +1,12 @@
+.navbar {
+  width: 100vw;
+}
+.navbar a {
+  color: #F40009;
+  opacity: 0.6;
+}
+.navbar a.active {
+  font-weight: 600;
+  opacity: 1;
+}
+/*# sourceMappingURL=header.component.css.map */

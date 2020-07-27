@@ -1,0 +1,16 @@
+.container-fluid {
+  width: 100vw;
+  height: 80vh;
+  background-image: url("../../assets/images/main-picture.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  opacity: 0.8;
+}
+.container-fluid .card {
+  width: 20rem;
+  margin: auto;
+}
+/*# sourceMappingURL=home.component.css.map */
