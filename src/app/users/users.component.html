@@ -1,9 +1,9 @@
-<div align="center" class="container-fluid">
+<div align="center" style="margin: 20px 50px">
   <button class="btn btn-danger"
           type="button"
           (click)="onButtonClicked()"
   style="margin: 30px">
-    Show {{ buttonClicked ? 'unfiltered' : 'filtered'}} users
+    Show {{ isFiltered ? 'unfiltered' : 'filtered'}} users
   </button>
 
   <table class="table">
@@ -16,7 +16,7 @@
       <th scope="col">Age</th>
     </tr>
     </thead>
-    <tbody *ngFor="let user of primaryUserArray; let id = index;">
+    <tbody *ngFor="let user of usersArray; let id = index;">
     <tr>
       <th>{{ id }}</th>
       <td>{{ user.firstName }}</td>

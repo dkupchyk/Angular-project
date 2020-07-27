@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from './user.model';
+import {from, Observable} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-users',
@@ -7,19 +9,20 @@ import {User} from './user.model';
   styleUrls: ['./users.component.less']
 })
 export class UsersComponent implements OnInit {
+  usersArray: User[] = [];
   primaryUserArray: User[] = [];
   filteredUserArray: User[] = [];
 
-  buttonClicked = false;
+  isFiltered = false;
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.generateArray();
+    this.usersArray = this.generateArray();
   }
 
-  generateArray(): void {
+  generateArray(): User[] {
     const firstNamesArray = ['John', 'Alexa', 'Max', 'Vika', 'Andrew'];
     const lastNamesArray = ['Trevino', 'Hamilton', 'Newman', 'Henderson', 'Erickson'];
     const citiesArray = ['Los-Angeles', 'Kyiv', 'Oslo', 'Sydney', 'Copenhagen'];
@@ -33,10 +36,27 @@ export class UsersComponent implements OnInit {
           Math.floor(Math.random() * 50) + 1
         ));
     }
+
+    return this.primaryUserArray;
+  }
+
+  filterArray(): User[] {
+    const observable = from(this.primaryUserArray);
+    observable.pipe(filter((user: User) => user.age >= 18))
+      .subscribe(    // <4>
+        user => this.filteredUserArray.push(user),
+        err => console.error(err),
+        () => console.log('Completed')
+      );
+
+    return this.filteredUserArray;
   }
 
   onButtonClicked(): void {
-    this.buttonClicked = !this.buttonClicked;
+    this.isFiltered = !this.isFiltered;
+    this.isFiltered
+      ? this.usersArray = this.filterArray()
+      : this.usersArray = this.primaryUserArray;
   }
 
 }
