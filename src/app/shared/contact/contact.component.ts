@@ -1,6 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Subscription} from 'rxjs';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
+import {POSITIVE_NUMBERS} from '../constants/patterns.constant';
 
 @Component({
   selector: 'app-contact',
@@ -9,7 +11,7 @@ import {Subscription} from 'rxjs';
 })
 export class ContactComponent implements OnInit, OnDestroy {
   contactForm: FormGroup;
-  private subscription: Subscription;
+  private destroyStream = new Subject<void>();
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -20,7 +22,8 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.destroyStream.next();
+    this.destroyStream.complete();
   }
 
   initForm(): void {
@@ -34,10 +37,11 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   formChanges(): void {
-    this.subscription = this.contactForm.get('checkAge').valueChanges
+    this.contactForm.get('checkAge').valueChanges
+      .pipe(takeUntil(this.destroyStream))
       .subscribe(value => {
         value
-          ? this.contactForm.addControl('age', new FormControl('', [Validators.required, Validators.pattern(/^[0-9]+[0-9]*$/)]))
+          ? this.contactForm.addControl('age', new FormControl('', [Validators.required, Validators.pattern(this.positiveNumbersPattern)]))
           : this.contactForm.removeControl('age');
         this.contactForm.updateValueAndValidity();
       });
@@ -45,6 +49,10 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   resetForm(): void {
     this.contactForm.reset();
+  }
+
+  get positiveNumbersPattern(): string {
+    return POSITIVE_NUMBERS;
   }
 
 }

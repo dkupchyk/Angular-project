@@ -8,10 +8,10 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="home">Home</a>
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="contact">Contact</a>
-      <a class="nav-item nav-link" routerLinkActive="active" routerLink="users">Users</a>
+    <div class="navbar-nav" *ngFor="let item of links">
+      <a class="nav-item nav-link"
+         routerLinkActive="active"
+         [routerLink]="item.link">{{ item.title }}</a>
     </div>
   </div>
 </nav>

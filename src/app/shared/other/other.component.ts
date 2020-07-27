@@ -26,8 +26,6 @@ export class OtherComponent implements OnInit {
 
   onButtonClicked(): void {
     this.buttonClicked = !this.buttonClicked;
-    this.buttonClicked
-      ? this.buttonText = this.hideText
-      : this.buttonText = this.showText;
+    this.buttonText = this.buttonClicked ? this.hideText : this.showText;
   }
 }

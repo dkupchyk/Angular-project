@@ -1,7 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {User} from './user.model';
-import {from, Observable, Subscription} from 'rxjs';
+import {from, Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
+import {CITIES_ARRAY, FIRST_NAME_ARRAY, LAST_NAME_ARRAY} from './constants/content.constant';
 
 @Component({
   selector: 'app-users',
@@ -22,17 +23,25 @@ export class UsersComponent implements OnInit {
     this.usersArray = this.generateArray();
   }
 
-  generateArray(): User[] {
-    const firstNamesArray = ['John', 'Alexa', 'Max', 'Vika', 'Andrew'];
-    const lastNamesArray = ['Trevino', 'Hamilton', 'Newman', 'Henderson', 'Erickson'];
-    const citiesArray = ['Los-Angeles', 'Kyiv', 'Oslo', 'Sydney', 'Copenhagen'];
+  get firstNameArray(): string[] {
+    return FIRST_NAME_ARRAY;
+  }
 
+  get lastNameArray(): string[] {
+    return LAST_NAME_ARRAY;
+  }
+
+  get citiesArray(): string[] {
+    return CITIES_ARRAY;
+  }
+
+  generateArray(): User[] {
     for (let i = 0; i < 20; i++) {
       this.primaryUserArray.push(
         new User(
-          firstNamesArray[Math.floor(Math.random() * 5)],
-          lastNamesArray[Math.floor(Math.random() * 5)],
-          citiesArray[Math.floor(Math.random() * 5)],
+          this.firstNameArray[Math.floor(Math.random() * 5)],
+          this.lastNameArray[Math.floor(Math.random() * 5)],
+          this.citiesArray[Math.floor(Math.random() * 5)],
           Math.floor(Math.random() * 50) + 1
         ));
     }
@@ -54,9 +63,7 @@ export class UsersComponent implements OnInit {
 
   onButtonClicked(): void {
     this.isFiltered = !this.isFiltered;
-    this.isFiltered
-      ? this.usersArray = this.filterArray()
-      : this.usersArray = this.primaryUserArray;
+    this.usersArray = this.isFiltered ? this.filterArray() : this.primaryUserArray;
   }
 
 }
