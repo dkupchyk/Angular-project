@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {User} from './user.model';
-import {from, Observable} from 'rxjs';
+import {from, Observable, Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
 @Component({
@@ -12,8 +12,8 @@ export class UsersComponent implements OnInit {
   usersArray: User[] = [];
   primaryUserArray: User[] = [];
   filteredUserArray: User[] = [];
-
   isFiltered = false;
+  private subscription: Subscription;
 
   constructor() {
   }
@@ -42,7 +42,7 @@ export class UsersComponent implements OnInit {
 
   filterArray(): User[] {
     const observable = from(this.primaryUserArray);
-    observable.pipe(filter((user: User) => user.age >= 18))
+    this.subscription = observable.pipe(filter((user: User) => user.age >= 18))
       .subscribe(    // <4>
         user => this.filteredUserArray.push(user),
         err => console.error(err),

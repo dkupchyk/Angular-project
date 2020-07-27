@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
 import {UsersComponent} from './users.component';
+import {AppRoutingModule} from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import {UsersComponent} from './users.component';
   ],
   imports: [
     BrowserModule,
-    SharedModule
+    SharedModule,
+    AppRoutingModule
   ],
   exports: [
     UsersComponent
