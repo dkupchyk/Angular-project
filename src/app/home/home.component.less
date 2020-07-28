@@ -1,4 +1,6 @@
-.container-fluid {
+@primary-red-color: #F40009;
+
+.main-view{
   width: 100vw;
   height: 80vh;
 
@@ -14,5 +16,21 @@
   & .card {
     width: 20rem;
     margin: auto;
+  }
+}
+
+.col-lg-4 {
+  margin: 5% 0;
+  text-align: center;
+  align-items: center;
+  width: 100px;
+
+  & img {
+    margin-bottom: 20px;
+    fill: #000;
+
+    & :hover {
+      fill: @primary-red-color;
+    }
   }
 }

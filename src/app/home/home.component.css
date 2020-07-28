@@ -1,4 +1,4 @@
-.container-fluid {
+.main-view {
   width: 100vw;
   height: 80vh;
   background-image: url("../../assets/images/main-picture.jpg");
@@ -9,8 +9,21 @@
   align-items: center;
   opacity: 0.8;
 }
-.container-fluid .card {
+.main-view .card {
   width: 20rem;
   margin: auto;
+}
+.col-lg-4 {
+  margin: 5% 0;
+  text-align: center;
+  align-items: center;
+  width: 100px;
+}
+.col-lg-4 img {
+  margin-bottom: 20px;
+  fill: #000;
+}
+.col-lg-4 img :hover {
+  fill: #F40009;
 }
 /*# sourceMappingURL=home.component.css.map */
