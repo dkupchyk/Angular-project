@@ -6,10 +6,13 @@ import {AppRoutingModule} from './app-routing.module';
 import {HomeModule} from './home/home.module';
 import {SharedModule} from './shared/shared.module';
 import {UsersModule} from './users/users.module';
+import { SubjectsTestingComponent } from './subjects-testing/subjects-testing.component';
+import {SubjectsTestingService} from './subjects-testing/subjects-testing.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SubjectsTestingComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +21,7 @@ import {UsersModule} from './users/users.module';
     UsersModule,
     SharedModule
   ],
-  providers: [],
+  providers: [SubjectsTestingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
