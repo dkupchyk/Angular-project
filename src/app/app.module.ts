@@ -8,11 +8,14 @@ import {SharedModule} from './shared/shared.module';
 import {UsersModule} from './users/users.module';
 import { SubjectsTestingComponent } from './subjects-testing/subjects-testing.component';
 import {SubjectsTestingService} from './subjects-testing/subjects-testing.service';
+import {SectionService} from './section/section.service';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SubjectsTestingComponent
+    SubjectsTestingComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,7 @@ import {SubjectsTestingService} from './subjects-testing/subjects-testing.servic
     UsersModule,
     SharedModule
   ],
-  providers: [SubjectsTestingService],
+  providers: [SubjectsTestingService, SectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

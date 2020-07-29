@@ -1,0 +1,13 @@
+.row {
+  margin: 5% 7%;
+}
+.btn {
+  width: 200px;
+}
+.btn:hover,
+.btn:focus {
+  background: white;
+  color: #F40009;
+  outline: none;
+}
+/*# sourceMappingURL=about.component.css.map */

@@ -19,18 +19,22 @@
   }
 }
 
+.sections-row {
+  margin: 2% 7%;
+}
+
 .col-lg-4 {
   margin: 5% 0;
   text-align: center;
   align-items: center;
   width: 100px;
 
-  & img {
+  & .sections-icon {
     margin-bottom: 20px;
-    fill: #000;
 
-    & :hover {
-      fill: @primary-red-color;
+    &:hover,
+    &:focus {
+      filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
     }
   }
 }

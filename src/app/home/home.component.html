@@ -12,35 +12,46 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="sections-row">
   <div class="row">
-    <div class="col-lg-4">
-      <img
-        src="../assets/icons/history-icon.svg"
-        alt="icon"
+
+    <div class="col-lg-4" (click)="changeRoute('subjects')">
+      <object
+        type="image/svg+xml"
+        data="../assets/icons/history-icon.svg"
+        class="sections-icon"
         height="85px"
-        width="100px"/>
+        width="100px">
+        Your browser does not support SVG
+      </object>
       <p>Look at our amazing history!</p>
     </div>
 
-    <div class="col-lg-4">
-      <img
-        src="../assets/icons/gallery-icon.svg"
-        alt="icon"
+    <div class="col-lg-4" (click)="changeRoute('subjects')">
+      <object
+        type="image/svg+xml"
+        data="../assets/icons/gallery-icon.svg"
+        class="sections-icon"
         height="85px"
-        width="100px"/>
+        width="100px">
+        Your browser does not support SVG
+      </object>
       <p>Make sure to have a glance of our awesome gallery!</p>
     </div>
 
     <div class="col-lg-4">
-      <img
-        src="../assets/icons/contact-icon.svg"
-        alt="icon"
+      <object
+        type="image/svg+xml"
+        data="../assets/icons/contact-icon.svg"
+        class="sections-icon"
         height="85px"
-        width="100px"/>
+        width="100px"
+        (click)="changeRoute('subjects')">
+        Your browser does not support SVG
+      </object>
       <p>Have any questions? Feel free to contact us!</p>
     </div>
-</div>
+  </div>
 
 </div>
 

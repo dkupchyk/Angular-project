@@ -1,0 +1,27 @@
+<div class="container-fluid" align="center">
+  <h3 style="margin-top: 20px">{{cardSection.title}}</h3>
+
+  <div class="row">
+    <div class="col-lg-4" *ngFor="let card of cardSection.items">
+      <div class="card" style="width: 20rem;">
+        <img class="card-img-top" src="{{card.imageUrl}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{card.title}}</h5>
+          <p class="card-text">{{card.description}}</p>
+          <a href="{{card.actionLink}}" class="card-link">More..</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <button class="btn btn-danger"
+          type="button"
+          (click)="onButtonClicked()">
+    See gallery
+  </button>
+
+  <h3 style="text-align: center; margin-top: 20px">{{carouselSection.title}}</h3>
+  
+</div>
+

@@ -8,6 +8,7 @@ import {Component} from '@angular/core';
 export class HeaderComponent {
   links = [
     {link: 'home', title: 'Home'},
+    {link: 'about', title: 'About'},
     {link: 'contact', title: 'Contact'},
     {link: 'users', title: 'Users'}
   ];
