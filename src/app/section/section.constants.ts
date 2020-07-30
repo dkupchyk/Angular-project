@@ -42,7 +42,7 @@ export const HOME_SECTION_2: Section = {
 export const OTHER_SECTION: Section = {
   title: 'Contact us',
   iconUrl: '../../assets/icons/contact-icon.svg',
-  actionLink: '../about',
+  actionLink: '../contact',
   items: [
     new SectionItem('', ''),
     new SectionItem('', '', ''),

@@ -6,12 +6,12 @@
       id="carousel"
       class="carousel slide"
       data-ride="carousel"
-      style="height: 30rem">
+      style="height: 20rem; margin: 50px 0">
       <div class="carousel-inner">
         <div class="carousel-item"
              *ngFor="let carouselItem of carouselSection.items; let i = index"
              [ngClass]="{'active' : i === 0}">
-          <img class="d-block w-60"
+          <img class="d-block w-50"
                [src]="carouselItem.imageUrl | sanitizeUrl"
                alt="First slide">
         </div>
@@ -31,7 +31,7 @@
 
   <div class="row">
     <div class="col-lg-4" *ngFor="let card of cardSection.items">
-      <div class="card" style="width: 20rem;">
+      <div class="card" style="width: 20rem; margin-bottom: 10px">
         <img class="card-img-top" src="{{card.imageUrl}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{card.title}}</h5>

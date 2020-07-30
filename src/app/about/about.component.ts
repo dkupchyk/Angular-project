@@ -25,8 +25,14 @@ export class AboutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.cardSection = this.sectionService.getSection(0);
-    this.carouselSection = this.sectionService.getSection(1);
+    this.sectionService.sectionsChanged.subscribe(
+      (sections: Section[]) => {
+        this.cardSection = sections[0];
+        this.carouselSection = sections[1];
+      }
+    );
+
+    this.sectionService.getSections();
 
     this.subscription = this.route.queryParams.subscribe(params => {
       this.typeParam = params['type'];
@@ -36,17 +42,11 @@ export class AboutComponent implements OnInit, OnDestroy {
       this.buttonClicked = true;
       this.buttonText = this.hideText;
     }
-    console.log(this.typeParam);
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-
-  // onButtonClicked(): void {
-  //   this.buttonClicked = !this.buttonClicked;
-  //   this.buttonText = this.buttonClicked ? this.hideText : this.showText;
-  // }
 
   get hideText(): string {
     return HIDE_GALLERY_CONSTANT;
