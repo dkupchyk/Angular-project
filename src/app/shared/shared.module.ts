@@ -5,12 +5,14 @@ import {ContactComponent} from './contact/contact.component';
 import {OtherComponent} from './other/other.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../app-routing.module';
+import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     OtherComponent,
-    ContactComponent
+    ContactComponent,
+    SanitizeUrlPipe
   ],
   imports: [
     BrowserModule,
@@ -20,7 +22,8 @@ import {AppRoutingModule} from '../app-routing.module';
   exports: [
     HeaderComponent,
     OtherComponent,
-    ContactComponent
+    ContactComponent,
+    SanitizeUrlPipe
   ],
   providers: []
 })

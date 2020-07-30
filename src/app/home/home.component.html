@@ -14,45 +14,20 @@
 
 <div class="sections-row">
   <div class="row">
-
-    <div class="col-lg-4" (click)="changeRoute('subjects')">
+    <div class="col-lg-4"
+         *ngFor="let section of sections; let i = index;" (click)="checkType(i)">
       <object
         type="image/svg+xml"
-        data="../assets/icons/history-icon.svg"
+        [data]="section.iconUrl | sanitizeUrl"
         class="sections-icon"
         height="85px"
         width="100px">
         Your browser does not support SVG
       </object>
-      <p>Look at our amazing history!</p>
-    </div>
-
-    <div class="col-lg-4" (click)="changeRoute('subjects')">
-      <object
-        type="image/svg+xml"
-        data="../assets/icons/gallery-icon.svg"
-        class="sections-icon"
-        height="85px"
-        width="100px">
-        Your browser does not support SVG
-      </object>
-      <p>Make sure to have a glance of our awesome gallery!</p>
-    </div>
-
-    <div class="col-lg-4">
-      <object
-        type="image/svg+xml"
-        data="../assets/icons/contact-icon.svg"
-        class="sections-icon"
-        height="85px"
-        width="100px"
-        (click)="changeRoute('subjects')">
-        Your browser does not support SVG
-      </object>
-      <p>Have any questions? Feel free to contact us!</p>
+      <h3>{{section.title}}</h3>
+      <p>{{section.description}}</p>
     </div>
   </div>
-
 </div>
 
 <app-other></app-other>

@@ -10,4 +10,8 @@
   color: #F40009;
   outline: none;
 }
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
 /*# sourceMappingURL=about.component.css.map */
