@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Subject, Subscription} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {take, takeUntil} from 'rxjs/operators';
 import {POSITIVE_NUMBERS} from '../constants/patterns.constant';
 import {Section} from '../../section/section.interface';
 import {SectionService} from '../../section/section.service';
@@ -15,18 +15,19 @@ export class ContactComponent implements OnInit, OnDestroy {
   contactForm: FormGroup;
   contactSection: Section;
   private destroyStream = new Subject();
-  private subscription = new Subscription();
 
   constructor(private formBuilder: FormBuilder,
               private sectionService: SectionService) {
   }
 
   ngOnInit(): void {
-    this.subscription = this.sectionService.sectionsChanged.subscribe(
-      (sections: Section[]) => {
-        this.contactSection = sections[2];
-      }
-    );
+    this.sectionService.sectionsChanged
+      .pipe(take(1))
+      .subscribe(
+        (sections: Section[]) => {
+          this.contactSection = sections[2];
+        }
+      );
 
     this.sectionService.getSections();
 
@@ -37,7 +38,6 @@ export class ContactComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroyStream.next();
     this.destroyStream.complete();
-    this.subscription.unsubscribe();
   }
 
   initForm(): void {

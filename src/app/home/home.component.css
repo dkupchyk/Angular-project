@@ -16,17 +16,16 @@
 .sections-row {
   margin: 2% 7%;
 }
-.col-lg-4 {
+.sections-col {
   margin: 5% 0;
   text-align: center;
   align-items: center;
-  width: 100px;
 }
-.col-lg-4 .sections-icon {
+.sections-col .sections-icon {
   margin-bottom: 20px;
 }
-.col-lg-4 .sections-icon:hover,
-.col-lg-4 .sections-icon:focus {
+.sections-col .sections-icon:hover,
+.sections-col .sections-icon:focus {
   filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
 /*# sourceMappingURL=home.component.css.map */

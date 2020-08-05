@@ -1,12 +1,11 @@
 <div class="container-fluid" align="center">
 
   <div *ngIf="typeParam === '2'">
-    <h3 style="text-align: center; margin-top: 20px">{{carouselSection.title}}</h3>
+    <h3>{{carouselSection.title}}</h3>
     <div
       id="carousel"
       class="carousel slide"
-      data-ride="carousel"
-      style="height: 20rem; margin: 50px 0">
+      data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item"
              *ngFor="let carouselItem of carouselSection.items; let i = index"
@@ -27,11 +26,11 @@
     </div>
   </div>
 
-  <h3 style="margin-top: 20px">{{cardSection.title}}</h3>
+  <h3>{{cardSection.title}}</h3>
 
-  <div class="row">
+  <div class="row card-row">
     <div class="col-lg-4" *ngFor="let card of cardSection.items">
-      <div class="card" style="width: 20rem; margin-bottom: 10px">
+      <div class="card card-item">
         <img class="card-img-top" src="{{card.imageUrl}}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{card.title}}</h5>
