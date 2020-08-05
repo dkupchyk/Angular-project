@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from './user.model';
 import {from, Subscription} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import {filter, scan, take} from 'rxjs/operators';
 import {CITIES_ARRAY, FIRST_NAME_ARRAY, LAST_NAME_ARRAY} from './constants/content.constant';
 
 @Component({
@@ -51,7 +51,9 @@ export class UsersComponent implements OnInit {
 
   filterArray(): User[] {
     const observable = from(this.primaryUserArray);
-    this.subscription = observable.pipe(filter((user: User) => user.age >= 18))
+    this.subscription = observable.pipe(
+      take(this.primaryUserArray.length),
+      filter((user: User) => user.age >= 18))
       .subscribe(    // <4>
         user => this.filteredUserArray.push(user),
         err => console.error(err),

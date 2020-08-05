@@ -1,0 +1,36 @@
+@primary-red-color: #F40009;
+
+h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.card-row {
+  margin: 50px;
+
+  & .card-item {
+    width: 20rem;
+    margin-bottom: 10px;
+  }
+}
+
+#carousel {
+  height: 20rem;
+  margin: 50px 0;
+}
+
+.btn {
+  width: 200px;
+
+  &:hover,
+  &:focus {
+    background: white;
+    color: @primary-red-color;
+    outline: none;
+  }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}

@@ -1,0 +1,44 @@
+<div class="container-fluid" align="center">
+
+  <div *ngIf="typeParam === '2'">
+    <h3>{{carouselSection.title}}</h3>
+    <div
+      id="carousel"
+      class="carousel slide"
+      data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item"
+             *ngFor="let carouselItem of carouselSection.items; let i = index"
+             [ngClass]="{'active' : i === 0}">
+          <img class="d-block w-50"
+               [src]="carouselItem.imageUrl | sanitizeUrl"
+               alt="First slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+  <h3>{{cardSection.title}}</h3>
+
+  <div class="row card-row">
+    <div class="col-lg-4" *ngFor="let card of cardSection.items">
+      <div class="card card-item">
+        <img class="card-img-top" src="{{card.imageUrl}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{card.title}}</h5>
+          <p class="card-text">{{card.description}}</p>
+          <a href="{{card.actionLink}}" class="card-link">More..</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

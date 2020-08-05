@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid main-view">
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">Coca cola</h5>
@@ -8,6 +8,24 @@
         Coca-Cola. Штаб-квартира — в столиці штату Джорджія — Атланті. </p>
       <a href="https://www.coca-cola.com/" class="card-link">Official website</a>
       <a href="https://uk.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BA%D0%B0-%D0%BA%D0%BE%D0%BB%D0%B0" class="card-link">Wikipedia</a>
+    </div>
+  </div>
+</div>
+
+<div class="sections-row">
+  <div class="row">
+    <div class="col-lg-4 col-md-12  col-sm-12 sections-col"
+         *ngFor="let section of sections; let i = index;" (click)="checkType(i)">
+      <object
+        type="image/svg+xml"
+        [data]="section.iconUrl | sanitizeUrl"
+        class="sections-icon"
+        height="85px"
+        width="100px">
+        Your browser does not support SVG
+      </object>
+      <h3>{{section.title}}</h3>
+      <p>{{section.description}}</p>
     </div>
   </div>
 </div>

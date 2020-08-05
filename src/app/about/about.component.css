@@ -1,0 +1,29 @@
+h3 {
+  text-align: center;
+  margin-top: 20px;
+}
+.card-row {
+  margin: 50px;
+}
+.card-row .card-item {
+  width: 20rem;
+  margin-bottom: 10px;
+}
+#carousel {
+  height: 20rem;
+  margin: 50px 0;
+}
+.btn {
+  width: 200px;
+}
+.btn:hover,
+.btn:focus {
+  background: white;
+  color: #F40009;
+  outline: none;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+/*# sourceMappingURL=about.component.css.map */

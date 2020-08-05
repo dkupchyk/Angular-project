@@ -1,4 +1,6 @@
-.container-fluid {
+@primary-red-color: #F40009;
+
+.main-view {
   width: 100vw;
   height: 80vh;
 
@@ -14,5 +16,24 @@
   & .card {
     width: 20rem;
     margin: auto;
+  }
+}
+
+.sections-row {
+  margin: 2% 7%;
+}
+
+.sections-col {
+  margin: 5% 0;
+  text-align: center;
+  align-items: center;
+
+  & .sections-icon {
+    margin-bottom: 20px;
+
+    &:hover,
+    &:focus {
+      filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+    }
   }
 }

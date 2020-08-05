@@ -1,8 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Subject} from 'rxjs';
-import {takeUntil} from 'rxjs/operators';
+import {take, takeUntil} from 'rxjs/operators';
 import {POSITIVE_NUMBERS} from '../constants/patterns.constant';
+import {Section} from '../../section/section.interface';
+import {SectionService} from '../../section/section.service';
 
 @Component({
   selector: 'app-contact',
@@ -11,12 +13,24 @@ import {POSITIVE_NUMBERS} from '../constants/patterns.constant';
 })
 export class ContactComponent implements OnInit, OnDestroy {
   contactForm: FormGroup;
-  private destroyStream = new Subject<void>();
+  contactSection: Section;
+  private destroyStream = new Subject();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private sectionService: SectionService) {
   }
 
   ngOnInit(): void {
+    this.sectionService.sectionsChanged
+      .pipe(take(1))
+      .subscribe(
+        (sections: Section[]) => {
+          this.contactSection = sections[2];
+        }
+      );
+
+    this.sectionService.getSections();
+
     this.initForm();
     this.formChanges();
   }
