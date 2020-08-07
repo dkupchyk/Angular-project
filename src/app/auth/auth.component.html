@@ -1,0 +1,45 @@
+<div id="signup-section">
+
+
+  <!--    <app-alert-->
+  <!--      [message]="error"-->
+  <!--      *ngIf="error"-->
+  <!--      (close)="onHandleError()"></app-alert>-->
+
+  <!--    <div *ngIf="isLoading" align="center">-->
+  <!--      <app-loading-spinner></app-loading-spinner>-->
+  <!--    </div>-->
+
+    <form [formGroup]="authForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email"
+               type="text"
+               class="form-control"
+               formControlName="email">
+        <span *ngIf="!authForm.get('email').valid && authForm.get('email').touched"
+              class="text-muted">
+        Please enter valid email address!
+      </span>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password"
+               type="password"
+               class="form-control"
+               formControlName="password">
+        <span *ngIf="!authForm.get('password').valid && authForm.get('password').touched"
+              class="text-muted">
+        Please enter a valid password!
+      </span>
+      </div>
+      <button type="submit"
+              class="btn btn-danger"
+              [disabled]="!authForm.valid">
+        Submit
+      </button>
+    </form>
+
+    <p>Still don't have an account? <span class="sign-in-text" (click)="changeToSignUpView()">Sing In</span></p>
+
+</div>

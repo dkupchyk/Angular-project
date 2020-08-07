@@ -1,0 +1,23 @@
+#signup-section {
+  overflow-x: hidden;
+  margin: 20px auto;
+  width: 500px;
+}
+#signup-section p {
+  margin-top: 20px;
+}
+#signup-section p .sign-in-text {
+  color: #F40009;
+  font-weight: 700;
+}
+#signup-section p .sign-in-text:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.btn-danger {
+  width: 200px;
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid #F40009;
+}
+/*# sourceMappingURL=auth.component.css.map */

@@ -10,6 +10,7 @@ export class HeaderComponent {
     {link: 'home', title: 'Home'},
     {link: 'about', title: 'About'},
     {link: 'contact', title: 'Contact'},
-    {link: 'users', title: 'Users'}
+    {link: 'users', title: 'Users'},
+    {link: 'log-in', title: 'Authorization'}
   ];
 }
