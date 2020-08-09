@@ -8,7 +8,10 @@ import {Router} from "@angular/router";
   styleUrls: ['./sign-up.component.less']
 })
 export class SignUpComponent implements OnInit {
-  signUpForm: FormGroup;
+  signUpForm1: FormGroup;
+  signUpForm2: FormGroup;
+  signUpForm3: FormGroup;
+
   error: string = null;
   sectionsIcons: string[] = [
     '../../assets/icons/1.svg',
@@ -26,12 +29,16 @@ export class SignUpComponent implements OnInit {
   }
 
   initForm(): void {
-    this.signUpForm = this.formBuilder.group({
+    this.signUpForm1 = this.formBuilder.group({
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      lastName: ['', Validators.required]
+    });
 
-      dateOfBirth: ['', Validators.required],
+    this.signUpForm2 = this.formBuilder.group({
+      dateOfBirth: ['', Validators.required]
+    });
 
+    this.signUpForm3 = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
@@ -41,7 +48,8 @@ export class SignUpComponent implements OnInit {
     this.error = null;
   }
 
-  onSubmit(form: NgForm): void {
+  onSubmit(form: FormGroup): void {
+    this.section++;
     form.reset();
   }
 
