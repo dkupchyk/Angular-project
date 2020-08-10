@@ -1,6 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, NgForm, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import {take} from "rxjs/operators";
+import * as fromApp from '../../store/app.reducer';
+import * as SignUpActions from './store/sign-up.actions';
+import {User} from "../user.model";
+
 
 @Component({
   selector: 'app-sign-up',
@@ -19,13 +26,25 @@ export class SignUpComponent implements OnInit {
     '../../assets/icons/3.svg'
   ];
   section = 1;
+  sectionAmount = 3;
+
+  userObs: Observable<{ user: User, section: number }>;
+  userData: User;
+  isFinished = false;
 
   constructor(private formBuilder: FormBuilder,
-              private router: Router) {
+              private router: Router,
+              private store: Store<fromApp.AppState>) {
   }
 
   ngOnInit(): void {
     this.initForm();
+    this.userObs = this.store.select('signUp');
+    this.userObs
+      .subscribe(stateData => {
+        this.section = stateData.section;
+        console.log(this.section);
+      });
   }
 
   initForm(): void {
@@ -44,21 +63,48 @@ export class SignUpComponent implements OnInit {
     });
   }
 
-  onHandleError(): void {
-    this.error = null;
-  }
-
   onSubmit(form: FormGroup): void {
-    this.section++;
+
+    if (form === this.signUpForm1) {
+      this.sendData('firstName', form.value.firstName);
+      this.sendData('lastName', form.value.lastName);
+      this.store.dispatch(new SignUpActions.IncreaseSection());
+
+    } else if (form === this.signUpForm2) {
+      this.sendData('dateOfBirth', form.value.dateOfBirth);
+      this.store.dispatch(new SignUpActions.IncreaseSection());
+
+    } else {
+      this.sendData('email', form.value.email);
+      this.sendData('password', form.value.password);
+      this.store.dispatch(new SignUpActions.IncreaseSection());
+    }
+
+    if (this.section === this.sectionAmount + 1) {
+      this.userObs
+        .pipe(take(1))
+        .subscribe(userData => {
+          this.userData = userData.user;
+          console.log(this.userData);
+          this.changePath('');
+        });
+    }
+
     form.reset();
   }
 
-  changeToSignUpView(): void {
-    this.router.navigate(['sign-up']);
+  sendData(property: string, value: any): void {
+    this.store.dispatch(new SignUpActions.SetData(
+      {
+        propertyName: property,
+        value: value
+      }
+    ));
   }
 
-  nextSection() {
-    this.section++;
+  changePath(path: string): void {
+    this.router.navigate([path]);
   }
+
 
 }

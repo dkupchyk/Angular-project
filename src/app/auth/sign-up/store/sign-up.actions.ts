@@ -1,20 +1,20 @@
 import {Action} from '@ngrx/store';
-import {User} from "../../user.model";
 
-export const NEXT = 'NEXT';
-export const FINISH = 'FINISH';
+export const SET_DATA = 'SET_DATA';
+export const INCREASE_SECTION = 'INCREASE_SECTION';
 
-export type SignUpActionsTypes = Next | Finish;
+export type SignUpActionsTypes = SetData | IncreaseSection;
 
-export class Next implements Action {
-  readonly type = NEXT;
+export class SetData implements Action {
+  readonly type = SET_DATA;
 
-  constructor(public payload: { user: User }) {}
+  constructor(public payload: { propertyName: string, value: any }) {
+  }
 }
 
-export class Finish implements Action {
-  readonly type = FINISH;
+export class IncreaseSection implements Action {
+  readonly type = INCREASE_SECTION;
 
-  constructor(public payload: { user: User }) {}
+  constructor() {
+  }
 }
-

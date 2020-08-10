@@ -16,6 +16,8 @@ import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import {StoreModule} from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 import {AuthModule} from './auth/auth.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {AuthModule} from './auth/auth.module';
     AuthModule,
     ReactiveFormsModule,
     StoreModule.forRoot(fromApp.appReducer),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [SubjectsTestingService, SectionService],
   bootstrap: [AppComponent]
