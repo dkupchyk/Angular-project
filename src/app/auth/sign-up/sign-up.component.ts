@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {Store} from "@ngrx/store";
@@ -7,6 +7,7 @@ import {take} from "rxjs/operators";
 import * as fromApp from '../../store/app.reducer';
 import * as SignUpActions from './store/sign-up.actions';
 import {User} from "../user.model";
+import {AuthService} from "../auth.service";
 
 
 @Component({
@@ -30,10 +31,11 @@ export class SignUpComponent implements OnInit {
 
   userObs: Observable<{ user: User, section: number }>;
   userData: User;
-  isFinished = false;
+  @Output() userDataEmitter = new EventEmitter<User>()
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
+              private authService: AuthService,
               private store: Store<fromApp.AppState>) {
   }
 
@@ -85,8 +87,8 @@ export class SignUpComponent implements OnInit {
         .pipe(take(1))
         .subscribe(userData => {
           this.userData = userData.user;
-          console.log(this.userData);
           this.changePath('');
+          this.authService.userChanged.next(this.userData);
         });
     }
 

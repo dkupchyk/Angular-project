@@ -2,7 +2,6 @@ import * as SighUpActions from './sign-up.actions';
 import {User} from "../../user.model";
 import clone from 'lodash/fp/clone';
 import setWith from 'lodash/fp/setWith';
-import set = Reflect.set;
 
 export interface State {
   user: User;

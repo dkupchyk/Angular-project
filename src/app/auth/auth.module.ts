@@ -5,23 +5,24 @@ import {AppRoutingModule} from '../app-routing.module';
 import {AuthComponent} from './auth.component';
 import {SignUpComponent} from './sign-up/sign-up.component';
 import {SharedModule} from "../shared/shared.module";
+import {AuthService} from "./auth.service";
 
 @NgModule({
   declarations: [
     AuthComponent,
     SignUpComponent
   ],
-    imports: [
-        BrowserModule,
-        ReactiveFormsModule,
-        AppRoutingModule,
-        SharedModule
-    ],
+  imports: [
+    BrowserModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    SharedModule
+  ],
   exports: [
     AuthComponent,
     SignUpComponent
   ],
-  providers: []
+  providers: [AuthService]
 })
 export class AuthModule {
 }

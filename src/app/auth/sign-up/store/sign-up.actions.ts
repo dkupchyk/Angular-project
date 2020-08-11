@@ -14,7 +14,4 @@ export class SetData implements Action {
 
 export class IncreaseSection implements Action {
   readonly type = INCREASE_SECTION;
-
-  constructor() {
-  }
 }

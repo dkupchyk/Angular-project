@@ -27,14 +27,6 @@ export class AuthComponent implements OnInit {
     });
   }
 
-  onHandleError(): void {
-    this.error = null;
-  }
-
-  onSubmit(form: NgForm): void {
-    form.reset();
-  }
-
   changeToSignUpView(): void {
     this.router.navigate(['sign-up']);
   }
