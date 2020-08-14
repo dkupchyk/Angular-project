@@ -6,11 +6,13 @@ import setWith from 'lodash/fp/setWith';
 export interface State {
   user: User;
   section: number;
+  isComplete: boolean;
 }
 
 const initialState: State = {
   user: new User(),
-  section: 1
+  section: 1,
+  isComplete: false
 };
 
 export function signUpReducer(
@@ -26,14 +28,24 @@ export function signUpReducer(
       return {
         ...state,
         user: newUserObject,
-        section: state.section
+        section: state.section,
+        isComplete: false
       };
 
     case SighUpActions.INCREASE_SECTION:
       return {
         ...state,
         user: state.user,
-        section: state.section + 1
+        section: state.section + 1,
+        isComplete: false
+      };
+
+    case SighUpActions.SUCCESS:
+      return {
+        ...state,
+        user: state.user,
+        section: state.section + 1,
+        isComplete: true
       };
 
     default:
