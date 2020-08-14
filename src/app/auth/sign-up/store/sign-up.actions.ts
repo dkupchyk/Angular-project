@@ -3,12 +3,13 @@ import {Action} from '@ngrx/store';
 export const SET_DATA = 'SET_DATA';
 export const INCREASE_SECTION = 'INCREASE_SECTION';
 export const SUCCESS = 'SUCCESS';
-// export const FAILED = 'FAILED';
+export const FAILED = 'FAILED';
 
 export type SignUpActionsTypes
   = SetData
   | IncreaseSection
-  | Success;
+  | Success
+  | Failed;
 
 export class SetData implements Action {
   readonly type = SET_DATA;
@@ -23,4 +24,8 @@ export class IncreaseSection implements Action {
 
 export class Success implements Action {
   readonly type = SUCCESS;
+}
+
+export class Failed implements Action {
+  readonly type = FAILED;
 }

@@ -48,6 +48,14 @@ export function signUpReducer(
         isComplete: true
       };
 
+    case SighUpActions.FAILED:
+      return {
+        ...state,
+        user: null,
+        section: 1,
+        isComplete: false
+      };
+
     default:
       return state;
   }

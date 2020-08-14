@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy, OnDestroy} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Store} from '@ngrx/store';
@@ -14,7 +14,7 @@ import * as fromApp from '../../store/app.reducer';
   styleUrls: ['./sign-up.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
   sectionsIcons: string[] = [
     '../../assets/icons/1.svg',
     '../../assets/icons/2.svg',
@@ -44,6 +44,11 @@ export class SignUpComponent implements OnInit {
       });
   }
 
+  ngOnDestroy(): void {
+    this.store.dispatch(new SignUpActions.Failed());
+    this.userObs.subscribe();
+  }
+
   changePath(path: string): void {
     this.router.navigate([path]);
   }
@@ -52,7 +57,7 @@ export class SignUpComponent implements OnInit {
     this.store.dispatch(new SignUpActions.SetData(
       {
         propertyName: property,
-        value: value
+        value
       }
     ));
   }

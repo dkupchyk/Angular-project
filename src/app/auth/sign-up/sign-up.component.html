@@ -1,7 +1,7 @@
 <div class="progress-row">
   <div *ngFor="let sectionIcon of sectionsIcons; let i = index">
     <object
-      [ngClass]="{'highlighted': i + 1 <= section}"
+      [ngClass]="{'highlighted': i + 1 <= section }"
       type="image/svg+xml"
       [data]="sectionIcon | sanitizeUrl"
       class="sections-icon">
