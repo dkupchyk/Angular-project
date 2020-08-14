@@ -21,13 +21,14 @@
 }
 
 .progress-row {
+  display: flex;
   position: relative;
-  margin: 10px auto;
+  left: 5%;
+  margin: 20px auto;
   width: 40vw;
 
-  & .sections-col {
-    margin: 5% 0;
-    align-items: center;
+  & > div {
+    display: flex;
 
     & object {
       width: 5vw;
@@ -35,11 +36,13 @@
     }
 
     & hr {
-      margin-top: 55%;
+      margin: 20% 20px 0 20px;
       border: 1px solid;
-      width: 5vw;
+      width: 4vw;
     }
   }
+
+
 }
 
 .highlighted {

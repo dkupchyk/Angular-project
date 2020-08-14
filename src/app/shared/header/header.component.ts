@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../../auth/auth.service";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AuthService} from '../../auth/auth.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.less']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   links = [
     {link: 'home', title: 'Home', visible: true},
     {link: 'about', title: 'About', visible: false},
@@ -14,19 +15,26 @@ export class HeaderComponent implements OnInit {
     {link: 'users', title: 'Users', visible: false},
     {link: 'log-in', title: 'Authorization', visible: true}
   ];
+  userSub = new Subscription();
 
   constructor(private authService: AuthService) {
   }
 
-  ngOnInit() {
-    this.authService.userChanged
+  ngOnInit(): void {
+    this.userSub = this.authService.userChanged
       .subscribe(user => {
-        if (user) this.changeLinkVisibility(true);
+        if (user) {
+          this.changeLinkVisibility(true);
+        }
       });
   }
 
-  changeLinkVisibility(value: boolean) {
-    for (let link of this.links) {
+  ngOnDestroy(): void {
+    this.userSub.unsubscribe();
+  }
+
+  changeLinkVisibility(value: boolean): void {
+    for (const link of this.links) {
       link.visible = value;
     }
   }

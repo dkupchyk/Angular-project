@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
-import {Store} from "@ngrx/store";
-import {AuthService} from "../../../auth.service";
-import {SignUpComponent} from "../../sign-up.component";
-import * as fromApp from "../../../../store/app.reducer";
-import * as SignUpActions from "../../store/sign-up.actions";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {AuthService} from '../../../auth.service';
+import {SignUpComponent} from '../../sign-up.component';
+import * as fromApp from '../../../../store/app.reducer';
+import * as SignUpActions from '../../store/sign-up.actions';
 
 @Component({
   selector: 'app-name-section',

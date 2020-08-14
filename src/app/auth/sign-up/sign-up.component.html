@@ -1,19 +1,15 @@
-<div class="row progress-row">
-  <div class="col-4 sections-col" *ngFor="let sectionIcon of sectionsIcons; let i = index">
-    <div class="row">
-      <div class="col-6">
-        <object
-          [ngClass]="{'highlighted': i + 1 <= section}"
-          type="image/svg+xml"
-          [data]="sectionIcon | sanitizeUrl"
-          class="sections-icon">
-          Your browser does not support SVG
-        </object>
-      </div>
-      <div class="col-6" *ngIf="i != sectionsIcons.length - 1">
-        <hr [ngClass]="{'highlighted': i + 1 < section}">
-      </div>
-    </div>
+<div class="progress-row">
+  <div *ngFor="let sectionIcon of sectionsIcons; let i = index">
+    <object
+      [ngClass]="{'highlighted': i + 1 <= section}"
+      type="image/svg+xml"
+      [data]="sectionIcon | sanitizeUrl"
+      class="sections-icon">
+      Your browser does not support SVG
+    </object>
+    <hr
+      *ngIf="i != sectionsIcons.length - 1"
+      [ngClass]="{'highlighted': i + 1 < section}">
   </div>
 </div>
 

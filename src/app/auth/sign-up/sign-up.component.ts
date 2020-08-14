@@ -1,11 +1,11 @@
 import {Component, OnInit, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
-import {FormBuilder} from "@angular/forms";
-import {Router} from "@angular/router";
-import {Store} from "@ngrx/store";
-import {Observable} from "rxjs";
-import {User} from "../user.model";
-import {AuthService} from "../auth.service";
-import * as SignUpActions from "./store/sign-up.actions";
+import {FormBuilder} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
+import {User} from '../user.model';
+import {AuthService} from '../auth.service';
+import * as SignUpActions from './store/sign-up.actions';
 import * as fromApp from '../../store/app.reducer';
 
 @Component({
@@ -23,7 +23,7 @@ export class SignUpComponent implements OnInit {
   section = 1;
   userObs: Observable<{ user: User, section: number, isComplete: boolean }>;
   userData: User;
-  @Output() userDataEmitter = new EventEmitter<User>()
+  @Output() userDataEmitter = new EventEmitter<User>();
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
