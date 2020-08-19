@@ -5,6 +5,8 @@ import {ContactComponent} from './shared/contact/contact.component';
 import {UsersComponent} from './users/users.component';
 import {SubjectsTestingComponent} from './subjects-testing/subjects-testing.component';
 import {AboutComponent} from './about/about.component';
+import {AuthComponent} from './auth/auth.component';
+import {SignUpComponent} from './auth/sign-up/sign-up.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -12,6 +14,8 @@ const appRoutes: Routes = [
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'users', component: UsersComponent},
+  {path: 'log-in', component: AuthComponent},
+  {path: 'sign-up', component: SignUpComponent},
   {path: 'section1', component: SubjectsTestingComponent},
   {path: 'section2', component: SubjectsTestingComponent},
   {path: 'section3', component: SubjectsTestingComponent},

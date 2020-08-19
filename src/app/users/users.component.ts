@@ -14,7 +14,7 @@ export class UsersComponent implements OnInit {
   primaryUserArray: User[] = [];
   filteredUserArray: User[] = [];
   isFiltered = false;
-  private subscription: Subscription;
+  randomIndex = Math.floor(Math.random() * 5);
 
   constructor() {
   }
@@ -39,9 +39,9 @@ export class UsersComponent implements OnInit {
     for (let i = 0; i < 20; i++) {
       this.primaryUserArray.push(
         new User(
-          this.firstNameArray[Math.floor(Math.random() * 5)],
-          this.lastNameArray[Math.floor(Math.random() * 5)],
-          this.citiesArray[Math.floor(Math.random() * 5)],
+          this.firstNameArray[this.randomIndex],
+          this.lastNameArray[this.randomIndex],
+          this.citiesArray[this.randomIndex],
           Math.floor(Math.random() * 50) + 1
         ));
     }
@@ -51,7 +51,7 @@ export class UsersComponent implements OnInit {
 
   filterArray(): User[] {
     const observable = from(this.primaryUserArray);
-    this.subscription = observable.pipe(
+    observable.pipe(
       take(this.primaryUserArray.length),
       filter((user: User) => user.age >= 18))
       .subscribe(    // <4>

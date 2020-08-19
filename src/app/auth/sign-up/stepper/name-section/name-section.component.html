@@ -1,0 +1,32 @@
+<form [formGroup]="signUpForm"
+      class="section-1"
+      (ngSubmit)="onSubmit(signUpForm)">
+  <div class="form-group">
+    <label for="firstName">First name</label>
+    <input id="firstName"
+           type="text"
+           class="form-control"
+           formControlName="firstName">
+    <span *ngIf="!signUpForm.get('firstName').valid && signUpForm.get('firstName').touched"
+          class="text-muted">
+        Please enter your first name!
+      </span>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last name</label>
+    <input id="lastName"
+           type="text"
+           class="form-control"
+           formControlName="lastName">
+    <span *ngIf="!signUpForm.get('lastName').valid && signUpForm.get('lastName').touched"
+          class="text-muted">
+        Please enter your last name!
+      </span>
+  </div>
+
+  <button type="submit"
+          class="btn btn-danger"
+          [disabled]="!signUpForm.valid">
+    Next
+  </button>
+</form>

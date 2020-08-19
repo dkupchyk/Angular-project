@@ -1,0 +1,25 @@
+<div class="progress-row">
+  <div class="sign-up-row" *ngFor="let sectionIcon of sectionsIcons; let i = index">
+    <object
+      [ngClass]="{'highlighted': i + 1 <= section }"
+      type="image/svg+xml"
+      [data]="sectionIcon | sanitizeUrl"
+      class="sections-icon">
+      Your browser does not support SVG
+    </object>
+    <hr
+      class="line"
+      *ngIf="i != sectionsIcons.length - 1"
+      [ngClass]="{'highlighted': i + 1 < section}">
+  </div>
+</div>
+
+<div id="signup-section">
+
+  <app-name-section *ngIf="section === 1"></app-name-section>
+  <app-birthday-section *ngIf="section === 2"></app-birthday-section>
+  <app-email-password-section *ngIf="section === 3"></app-email-password-section>
+
+  <p class="additional-text">Already have an account? <span class="sign-in-text" (click)="changePath('log-in')">Log In</span></p>
+
+</div>

@@ -1,9 +1,9 @@
 <div id="contact-section">
-  <h3>{{contactSection.title}}</h3>
+  <h3 class="title">{{contactSection.title}}</h3>
 
   <form [formGroup]="contactForm">
     <div class="form-group">
-      <label for="name">Full name</label>
+      <label>Full name</label>
       <input id="name"
              type="text"
              class="form-control"
@@ -14,7 +14,7 @@
       </span>
     </div>
     <div class="form-group">
-      <label for="email">Email</label>
+      <label>Email</label>
       <input id="email"
              type="text"
              class="form-control"
@@ -25,7 +25,7 @@
       </span>
     </div>
     <div class="form-group">
-      <label for="topic">Topic</label>
+      <label>Topic</label>
       <input id="topic"
              type="text"
              class="form-control"
@@ -36,7 +36,7 @@
       </span>
     </div>
     <div class="form-group">
-      <label for="message">Message</label>
+      <label>Message</label>
       <textarea id="message"
                 type="text"
                 class="form-control"
@@ -57,7 +57,7 @@
              formControlName="checkAge">
       <label for="checkAge">Enter your age</label>
       <div *ngIf="contactForm.get('checkAge').value">
-        <label for="age">Age</label>
+        <label>Age</label>
         <input id="age"
                type="number"
                class="form-control"

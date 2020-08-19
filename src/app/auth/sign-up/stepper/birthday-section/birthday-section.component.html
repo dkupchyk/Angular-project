@@ -1,0 +1,22 @@
+<form [formGroup]="signUpForm"
+      class="section-2"
+      (ngSubmit)="onSubmit(signUpForm)">
+  <div class="form-group">
+    <label for="dateOfBirth">Date of birth</label>
+    <input id="dateOfBirth"
+           type="date"
+           class="form-control"
+           formControlName="dateOfBirth">
+    <span *ngIf="!signUpForm.get('dateOfBirth').valid && signUpForm.get('dateOfBirth').touched"
+          class="text-muted">
+        Please enter your date of birth!
+      </span>
+  </div>
+
+  <button type="submit"
+          class="btn btn-danger"
+          [disabled]="!signUpForm.valid">
+    Next
+  </button>
+
+</form>

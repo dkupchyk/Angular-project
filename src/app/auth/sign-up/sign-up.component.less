@@ -1,0 +1,57 @@
+@primary-red-color: #F40009;
+
+#signup-section {
+  overflow-x: hidden;
+  margin: 20px auto;
+  width: 500px;
+
+  & .additional-text {
+    margin: 20px 0;
+
+    & .sign-in-text {
+      color: @primary-red-color;
+      font-weight: 700;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.progress-row {
+  display: flex;
+  position: relative;
+  left: 5%;
+  margin: 20px auto;
+  width: 40vw;
+
+  & > .sign-up-row {
+    display: flex;
+
+    & .sections-icon {
+      width: 5vw;
+      height: 5vw;
+    }
+
+    & .line {
+      margin: 20% 20px 0 20px;
+      border: 1px solid;
+      width: 4vw;
+    }
+  }
+}
+
+.highlighted {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
+.btn-danger {
+  width: 200px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid @primary-red-color;
+}
+

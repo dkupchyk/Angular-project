@@ -131,6 +131,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "Angular-project"
+    }
+  },
+  "defaultProject": "Angular-project",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "less"
+    }
+  }
 }

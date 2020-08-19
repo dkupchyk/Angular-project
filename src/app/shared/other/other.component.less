@@ -1,8 +1,8 @@
-@primary-red-color: #F40009;
+@import "../../variables.less";
 
-div {
+.other-container {
   margin: 50px 0;
-  & p {
+  & .text {
     margin: 50px;
   }
 }
@@ -12,7 +12,7 @@ div {
 
   &:hover,
   &:focus {
-    background: white;
+    background: @white_deep;
     color: @primary-red-color;
     outline: none;
   }

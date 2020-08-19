@@ -1,6 +1,6 @@
-@primary-red-color: #F40009;
+@import "../variables.less";
 
-h3 {
+.title {
   text-align: center;
   margin-top: 20px;
 }
@@ -24,7 +24,7 @@ h3 {
 
   &:hover,
   &:focus {
-    background: white;
+    background: @white_deep;
     color: @primary-red-color;
     outline: none;
   }

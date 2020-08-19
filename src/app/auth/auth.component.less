@@ -1,0 +1,28 @@
+@import "../variables.less";
+
+#signup-section {
+  overflow-x: hidden;
+  margin: 20px auto;
+  width: 500px;
+
+  & .additional-text {
+    margin-top: 20px;
+    & .sign-in-text {
+      color: @primary-red-color;
+      font-weight: 700;
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.btn-danger {
+  width: 200px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid @primary-red-color;
+}
+
