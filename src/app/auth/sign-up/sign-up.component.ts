@@ -49,14 +49,6 @@ export class SignUpComponent implements OnInit, OnDestroy {
     this.userObs.subscribe();
   }
 
-  // setIconStyle(iconPath: string, index: number): string {
-  //   if (index + 1 <= this.section) {
-  //     console.log(iconPath);
-  //     return  'mask-image: image(url(' + iconPath + '), red)';
-  //   }
-  //   return  'mask-image: image(url(' + iconPath + '), red)';
-  // }
-
   changePath(path: string): void {
     this.router.navigate([path]);
   }

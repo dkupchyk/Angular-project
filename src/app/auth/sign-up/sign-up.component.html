@@ -1,5 +1,5 @@
 <div class="progress-row">
-  <div *ngFor="let sectionIcon of sectionsIcons; let i = index">
+  <div class="sign-up-row" *ngFor="let sectionIcon of sectionsIcons; let i = index">
     <object
       [ngClass]="{'highlighted': i + 1 <= section }"
       type="image/svg+xml"
@@ -8,6 +8,7 @@
       Your browser does not support SVG
     </object>
     <hr
+      class="line"
       *ngIf="i != sectionsIcons.length - 1"
       [ngClass]="{'highlighted': i + 1 < section}">
   </div>
@@ -19,6 +20,6 @@
   <app-birthday-section *ngIf="section === 2"></app-birthday-section>
   <app-email-password-section *ngIf="section === 3"></app-email-password-section>
 
-  <p>Already have an account? <span class="sign-in-text" (click)="changePath('log-in')">Log In</span></p>
+  <p class="additional-text">Already have an account? <span class="sign-in-text" (click)="changePath('log-in')">Log In</span></p>
 
 </div>

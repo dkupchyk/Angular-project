@@ -1,4 +1,5 @@
 import {Action} from '@ngrx/store';
+import {Payload} from './payload.interface';
 
 export const SET_DATA = 'SET_DATA';
 export const INCREASE_SECTION = 'INCREASE_SECTION';
@@ -14,7 +15,7 @@ export type SignUpActionsTypes
 export class SetData implements Action {
   readonly type = SET_DATA;
 
-  constructor(public payload: { propertyName: string, value: any }) {
+  constructor(public payload: Payload) {
   }
 }
 
