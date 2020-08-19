@@ -43,13 +43,9 @@
   }
 }
 
-.highlighted(@url) {
-  mask-image: image(url(@url), red);
+.highlighted {
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
 }
-
-//.highlighted {
-//  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
-//}
 
 .btn-danger {
   width: 200px;

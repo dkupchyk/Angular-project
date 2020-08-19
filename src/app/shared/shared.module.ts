@@ -6,17 +6,13 @@ import {OtherComponent} from './other/other.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../app-routing.module';
 import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
-import {LoadingSpinnerComponent} from './loading-spinner/loading-spinner.component';
-import {AlertComponent} from './alert/alert.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     OtherComponent,
     ContactComponent,
-    SanitizeUrlPipe,
-    LoadingSpinnerComponent,
-    AlertComponent
+    SanitizeUrlPipe
   ],
   imports: [
     BrowserModule,
@@ -27,9 +23,7 @@ import {AlertComponent} from './alert/alert.component';
     HeaderComponent,
     OtherComponent,
     ContactComponent,
-    SanitizeUrlPipe,
-    LoadingSpinnerComponent,
-    AlertComponent
+    SanitizeUrlPipe
   ],
   providers: []
 })
