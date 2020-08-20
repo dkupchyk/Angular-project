@@ -7,6 +7,7 @@ import {SubjectsTestingComponent} from './subjects-testing/subjects-testing.comp
 import {AboutComponent} from './about/about.component';
 import {AuthComponent} from './auth/auth.component';
 import {SignUpComponent} from './auth/sign-up/sign-up.component';
+import {AutocompleteComponent} from './shared/autocomplete/autocomplete.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -19,7 +20,8 @@ const appRoutes: Routes = [
   {path: 'section1', component: SubjectsTestingComponent},
   {path: 'section2', component: SubjectsTestingComponent},
   {path: 'section3', component: SubjectsTestingComponent},
-  {path: 'subjects', component: SubjectsTestingComponent}
+  {path: 'subjects', component: SubjectsTestingComponent},
+  {path: 'autocomplete', component: AutocompleteComponent}
 ];
 
 @NgModule({

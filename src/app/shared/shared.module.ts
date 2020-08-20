@@ -6,13 +6,15 @@ import {OtherComponent} from './other/other.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../app-routing.module';
 import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     OtherComponent,
     ContactComponent,
-    SanitizeUrlPipe
+    SanitizeUrlPipe,
+    AutocompleteComponent
   ],
   imports: [
     BrowserModule,

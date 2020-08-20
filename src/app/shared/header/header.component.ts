@@ -10,6 +10,7 @@ import {Subscription} from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
   links = [
     {link: 'home', title: 'Home', visible: true},
+    {link: 'autocomplete', title: 'Autocomplete', visible: true},
     {link: 'about', title: 'About', visible: false},
     {link: 'contact', title: 'Contact', visible: false},
     {link: 'users', title: 'Users', visible: false},

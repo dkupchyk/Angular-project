@@ -1,0 +1,87 @@
+<div class="autocomplete-section">
+
+  <form [formGroup]="autocompleteForm">
+    <div class="form-group">
+      <label>City</label>
+      <input id="city"
+             type="text"
+             class="form-control"
+             formControlName="city">
+      <span *ngIf="!autocompleteForm.get('city').valid && autocompleteForm.get('city').touched"
+            class="text-muted">
+        Please enter a city!
+      </span>
+    </div>
+
+    <div class="autocomplete-row">
+      <div class="form-group autocomplete-col">
+        <label>Pick-up date</label>
+        <input id="pickUpDate"
+               type="Date"
+               class="form-control"
+               formControlName="pickUpDate">
+        <span *ngIf="!autocompleteForm.get('pickUpDate').valid && autocompleteForm.get('pickUpDate').touched"
+              class="text-muted">
+        Please enter a date!
+      </span>
+      </div>
+
+      <div class="form-group autocomplete-col">
+        <label>Pick-up time</label>
+        <input id="pickUpTime"
+               type="Time"
+               class="form-control"
+               formControlName="pickUpTime">
+        <span *ngIf="!autocompleteForm.get('pickUpTime').valid && autocompleteForm.get('pickUpTime').touched"
+              class="text-muted">
+        Please enter time!
+      </span>
+      </div>
+    </div>
+
+    <div class="autocomplete-row">
+      <div class="form-group autocomplete-col">
+        <label>Drop-off date</label>
+        <input id="dropOffDate"
+               type="Date"
+               class="form-control"
+               formControlName="dropOffDate">
+        <span *ngIf="!autocompleteForm.get('dropOffDate').valid && autocompleteForm.get('dropOffDate').touched"
+              class="text-muted">
+        Please enter a date!
+      </span>
+      </div>
+
+      <div class="form-group autocomplete-col">
+        <label>Drop-off time</label>
+        <input id="dropOffTime"
+               type="Time"
+               class="form-control"
+               formControlName="dropOffTime">
+        <span *ngIf="!autocompleteForm.get('dropOffTime').valid && autocompleteForm.get('dropOffTime').touched"
+              class="text-muted">
+        Please enter time!
+      </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Age</label>
+      <input id="age"
+             type="text"
+             class="form-control"
+             formControlName="age">
+      <span *ngIf="!autocompleteForm.get('age').valid && autocompleteForm.get('age').touched"
+            class="text-muted">
+        Please enter your age!
+      </span>
+    </div>
+
+    <button type="submit"
+            class="btn btn-danger search-button"
+            [disabled]="!autocompleteForm.valid">
+      Search
+    </button>
+  </form>
+
+</div>
