@@ -18,6 +18,7 @@ import * as fromApp from './store/app.reducer';
 import {AuthModule} from './auth/auth.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { environment } from '../environments/environment';
     SharedModule,
     AuthModule,
     ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],

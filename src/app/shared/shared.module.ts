@@ -7,25 +7,30 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../app-routing.module';
 import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {SearchFilterPipe} from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     OtherComponent,
     ContactComponent,
+    AutocompleteComponent,
     SanitizeUrlPipe,
-    AutocompleteComponent
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   exports: [
     HeaderComponent,
     OtherComponent,
     ContactComponent,
-    SanitizeUrlPipe
+    SanitizeUrlPipe,
+    SearchFilterPipe
   ],
   providers: []
 })

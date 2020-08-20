@@ -6,7 +6,13 @@
       <input id="city"
              type="text"
              class="form-control"
-             formControlName="city">
+             formControlName="city"
+             (click)="toogleDropdown()">
+      <div *ngIf="showDropdown" class="city-dropdown-container">
+        <div class="city-text" *ngFor="let city of citiesNames | searchFilter: getCityValue()">
+          {{city}}
+        </div>
+      </div>
       <span *ngIf="!autocompleteForm.get('city').valid && autocompleteForm.get('city').touched"
             class="text-muted">
         Please enter a city!

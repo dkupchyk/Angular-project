@@ -1,4 +1,4 @@
-import {from, Subject} from 'rxjs';
+import {Subject} from 'rxjs';
 import {Section} from './section.interface';
 import {CARD_SECTION, HOME_SECTION_2, OTHER_SECTION} from './section.constants';
 
