@@ -74,14 +74,18 @@
 
     <div class="form-group">
       <label>Age</label>
-      <input id="age"
-             type="text"
-             class="form-control"
-             formControlName="age">
-      <span *ngIf="!autocompleteForm.get('age').valid && autocompleteForm.get('age').touched"
-            class="text-muted">
-        Please enter your age!
-      </span>
+      <select class="custom-select" (change)="changeAgeOption($event)" formControlName="age">
+        <option value="" disabled>Choose your city</option>
+        <option *ngFor="let ageOption of ageOptions" [ngValue]="ageOption">{{ageOption}}</option>
+      </select>
+<!--      <input id="age"-->
+<!--             type="text"-->
+<!--             class="form-control"-->
+<!--             formControlName="age">-->
+<!--      <span *ngIf="!autocompleteForm.get('age').valid && autocompleteForm.get('age').touched"-->
+<!--            class="text-muted">-->
+<!--        Please enter your age!-->
+<!--      </span>-->
     </div>
 
     <button type="submit"

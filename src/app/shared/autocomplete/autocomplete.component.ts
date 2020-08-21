@@ -21,6 +21,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
   citiesNames: string[] = [];
   showDropdown = false;
   citySub: Subscription;
+  ageOptions = ['Under 18', '18-25', '25-40', 'Over 40'];
 
   constructor(private formBuilder: FormBuilder,
               private http: HttpClient) {
@@ -70,5 +71,11 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
 
   getCityValue(): string {
     return this.autocompleteForm.value.city;
+  }
+
+  changeAgeOption(e): void {
+    this.autocompleteForm.get('age').setValue(e.target.value, {
+      onlySelf: true
+    });
   }
 }
