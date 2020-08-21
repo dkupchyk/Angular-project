@@ -73,9 +73,23 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
     return this.autocompleteForm.value.city;
   }
 
+  changeCity(city: string): void {
+    this.changeValue('city', city);
+    this.showDropdown = false;
+  }
+
   changeAgeOption(e): void {
-    this.autocompleteForm.get('age').setValue(e.target.value, {
+    this.changeValue('age', e.target.value);
+  }
+
+  changeValue(propertyName: string, value: any): void {
+    this.autocompleteForm.get(propertyName).setValue(value, {
       onlySelf: true
     });
   }
+
+  onSubmit(): void {
+    this.autocompleteForm.reset();
+  }
+
 }

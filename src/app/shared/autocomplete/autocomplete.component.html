@@ -1,6 +1,6 @@
 <div class="autocomplete-section">
 
-  <form [formGroup]="autocompleteForm">
+  <form [formGroup]="autocompleteForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label>City</label>
       <input id="city"
@@ -10,7 +10,7 @@
              (click)="toogleDropdown()"
              autocomplete="off">
       <div *ngIf="showDropdown" class="city-dropdown-container">
-        <div class="city-text" *ngFor="let city of citiesNames | searchFilter: getCityValue()">
+        <div (click)="changeCity(city)" class="city-text" *ngFor="let city of citiesNames | searchFilter: getCityValue()">
           {{city}}
         </div>
       </div>
@@ -78,14 +78,6 @@
         <option value="" disabled>Choose your city</option>
         <option *ngFor="let ageOption of ageOptions" [ngValue]="ageOption">{{ageOption}}</option>
       </select>
-<!--      <input id="age"-->
-<!--             type="text"-->
-<!--             class="form-control"-->
-<!--             formControlName="age">-->
-<!--      <span *ngIf="!autocompleteForm.get('age').valid && autocompleteForm.get('age').touched"-->
-<!--            class="text-muted">-->
-<!--        Please enter your age!-->
-<!--      </span>-->
     </div>
 
     <button type="submit"
