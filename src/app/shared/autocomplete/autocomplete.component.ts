@@ -88,8 +88,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
     });
   }
 
-  onSubmit(): void {
+  resetForm(): void {
     this.autocompleteForm.reset();
   }
-
 }
