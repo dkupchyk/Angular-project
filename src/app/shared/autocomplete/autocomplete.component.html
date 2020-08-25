@@ -1,6 +1,6 @@
 <div class="autocomplete-section">
 
-  <form [formGroup]="autocompleteForm">
+  <form [formGroup]="autocompleteForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label>City</label>
       <input id="city"
@@ -10,7 +10,8 @@
              (click)="toogleDropdown()"
              autocomplete="off">
       <div *ngIf="showDropdown" class="city-dropdown-container">
-        <div (click)="changeCity(city)" class="city-text" *ngFor="let city of citiesNames | searchFilter: getCityValue()">
+        <div (click)="changeCity(city)" class="city-text"
+             *ngFor="let city of citiesNames | searchFilter: getCityValue()">
           {{city}}
         </div>
       </div>
@@ -82,37 +83,9 @@
 
     <button type="submit"
             class="btn btn-danger search-button"
-            data-toggle="modal"
-            data-target="#resultModal"
             [disabled]="!autocompleteForm.valid">
       Search
     </button>
   </form>
-
-  <div class="modal fade"
-       id="resultModal"
-       tabindex="-1"
-       role="dialog"
-       aria-labelledby="resultModalLabel"
-       aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="resultModalLabel">Your data</h5>
-        </div>
-        <div class="modal-body">
-          <p>City: {{autocompleteForm.get('city').value}}</p>
-          <p>Pick up date: {{autocompleteForm.get('pickUpDate').value}}</p>
-          <p>Pick up time: {{autocompleteForm.get('pickUpTime').value}}</p>
-          <p>Drop off date: {{autocompleteForm.get('dropOffDate').value}}</p>
-          <p>Drop off time: {{autocompleteForm.get('dropOffTime').value}}</p>
-          <p>Age: {{autocompleteForm.get('age').value}}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="resetForm()">Ok</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>

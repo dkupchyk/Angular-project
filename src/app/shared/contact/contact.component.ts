@@ -5,6 +5,8 @@ import {take, takeUntil} from 'rxjs/operators';
 import {POSITIVE_NUMBERS} from '../constants/patterns.constant';
 import {Section} from '../../section/section.interface';
 import {SectionService} from '../../section/section.service';
+import {Router} from '@angular/router';
+import {ModalService} from '../modal/modal.service';
 
 @Component({
   selector: 'app-contact',
@@ -17,7 +19,9 @@ export class ContactComponent implements OnInit, OnDestroy {
   private destroyStream = new Subject();
 
   constructor(private formBuilder: FormBuilder,
-              private sectionService: SectionService) {
+              private router: Router,
+              private sectionService: SectionService,
+              private modalService: ModalService) {
   }
 
   ngOnInit(): void {
@@ -61,8 +65,18 @@ export class ContactComponent implements OnInit, OnDestroy {
       });
   }
 
-  resetForm(): void {
-    this.contactForm.reset();
+  onSubmit(): void {
+    const resultArray: { title: string, value: any }[] = [
+      {title: 'Name', value: this.contactForm.get('name').value},
+      {title: 'Email', value: this.contactForm.get('email').value},
+      {title: 'Topic', value: this.contactForm.get('topic').value},
+      {title: 'Message', value: this.contactForm.get('message').value}
+    ];
+    if (this.contactForm.get('age')) {
+      resultArray.push({title: 'Age', value: this.contactForm.get('age').value});
+    }
+    this.modalService.modalData = resultArray;
+    this.router.navigate(['result']);
   }
 
   get positiveNumbersPattern(): string {

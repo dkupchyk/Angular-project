@@ -1,7 +1,9 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import * as citiesJsonData from '../constants/cities.constant.json';
+import {Router} from '@angular/router';
+import {ModalService} from '../modal/modal.service';
 
 export interface City {
   country: string;
@@ -22,12 +24,14 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
   citySub: Subscription;
   ageOptions = ['Under 18', '18-25', '25-40', 'Over 40'];
   cities: City[] = (citiesJsonData as any).default;
+  @Output() eventEmitter = new EventEmitter();
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private modalService: ModalService) {
   }
 
   ngOnInit(): void {
-    console.log(this.cities);
     this.initForm();
     this.initCitiesArray();
   }
@@ -80,7 +84,16 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
     });
   }
 
-  resetForm(): void {
-    this.autocompleteForm.reset();
+  onSubmit(): void {
+    const resultArray: {title: string, value: any}[] = [
+      {title: 'City', value: this.autocompleteForm.get('city').value},
+      {title: 'Pick up date', value: this.autocompleteForm.get('pickUpDate').value},
+      {title: 'Pick up time', value: this.autocompleteForm.get('pickUpTime').value},
+      {title: 'Drop off date', value: this.autocompleteForm.get('dropOffDate').value},
+      {title: 'Drop off time', value: this.autocompleteForm.get('dropOffTime').value},
+      {title: 'Age', value: this.autocompleteForm.get('age').value}
+    ];
+    this.modalService.modalData = resultArray;
+    this.router.navigate(['result']);
   }
 }

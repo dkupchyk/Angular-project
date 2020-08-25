@@ -9,6 +9,8 @@ import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {SearchFilterPipe} from './pipes/search-filter.pipe';
+import { ModalComponent } from './modal/modal.component';
+import {ModalService} from './modal/modal.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import {SearchFilterPipe} from './pipes/search-filter.pipe';
     ContactComponent,
     AutocompleteComponent,
     SanitizeUrlPipe,
-    SearchFilterPipe
+    SearchFilterPipe,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import {SearchFilterPipe} from './pipes/search-filter.pipe';
     SanitizeUrlPipe,
     SearchFilterPipe
   ],
-  providers: []
+  providers: [ModalService]
 })
 export class SharedModule {
 }
