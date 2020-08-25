@@ -24,9 +24,8 @@
     <div class="autocomplete-row">
       <div class="form-group autocomplete-col">
         <label>Pick-up date</label>
-        <input id="pickUpDate"
-               type="Date"
-               class="form-control"
+        <input type="Date"
+               class="form-control pickUpDate"
                formControlName="pickUpDate">
         <span *ngIf="!autocompleteForm.get('pickUpDate').valid && autocompleteForm.get('pickUpDate').touched"
               class="text-muted">
@@ -36,9 +35,8 @@
 
       <div class="form-group autocomplete-col">
         <label>Pick-up time</label>
-        <input id="pickUpTime"
-               type="Time"
-               class="form-control"
+        <input type="Time"
+               class="form-control pickUpTime"
                formControlName="pickUpTime">
         <span *ngIf="!autocompleteForm.get('pickUpTime').valid && autocompleteForm.get('pickUpTime').touched"
               class="text-muted">
@@ -50,9 +48,8 @@
     <div class="autocomplete-row">
       <div class="form-group autocomplete-col">
         <label>Drop-off date</label>
-        <input id="dropOffDate"
-               type="Date"
-               class="form-control"
+        <input type="Date"
+               class="form-control dropOffDate"
                formControlName="dropOffDate">
         <span *ngIf="!autocompleteForm.get('dropOffDate').valid && autocompleteForm.get('dropOffDate').touched"
               class="text-muted">
@@ -62,9 +59,8 @@
 
       <div class="form-group autocomplete-col">
         <label>Drop-off time</label>
-        <input id="dropOffTime"
-               type="Time"
-               class="form-control"
+        <input type="Time"
+               class="form-control dropOffTime"
                formControlName="dropOffTime">
         <span *ngIf="!autocompleteForm.get('dropOffTime').valid && autocompleteForm.get('dropOffTime').touched"
               class="text-muted">

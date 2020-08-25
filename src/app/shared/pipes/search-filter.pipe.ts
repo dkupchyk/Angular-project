@@ -6,11 +6,11 @@ export class SearchFilterPipe implements PipeTransform {
     if (!search) {
       return value;
     }
-    const solution = value.filter(v => {
-      if (!v) {
+    const solution = value.filter(item => {
+      if (!item) {
         return;
       }
-      return v.toLowerCase().indexOf(search.toLowerCase()) !== -1;
+      return item.toLowerCase().indexOf(search.toLowerCase()) !== -1;
     });
     return solution;
   }

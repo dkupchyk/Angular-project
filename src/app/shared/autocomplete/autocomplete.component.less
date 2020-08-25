@@ -1,7 +1,7 @@
 @import "../../variables.less";
 
 .autocomplete-section {
-  width: 40vw;
+  width: 450px;
   margin: 5% auto;
   border: 2px solid @primary-red-color;
   border-radius: 20px;
@@ -33,7 +33,7 @@
     font-weight: 500;
 
     &:hover {
-      background: lightgrey;
+      background: @lightgray;
     }
   }
 }
@@ -44,8 +44,8 @@
   & .autocomplete-col {
     display: block;
 
-    & #pickUpTime,
-    & #dropOffTime {
+    & .pickUpTime,
+    & .dropOffTime {
       width: 100%;
     }
   }

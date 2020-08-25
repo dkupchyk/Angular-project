@@ -1,16 +1,11 @@
 import {Component, OnDestroy, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
-import * as citiesJsonData from '../constants/cities.constant.json';
 import {Router} from '@angular/router';
 import {ModalService} from '../modal/modal.service';
-
-export interface City {
-  country: string;
-  geonameid: number;
-  name: string;
-  subcountry: string;
-}
+import {City} from './city.interface';
+import {AGE_OPTIONS} from '../constants/autocomplete-form.constants';
+import * as citiesJsonData from '../constants/cities.constant.json';
 
 @Component({
   selector: 'app-autocomplete',
@@ -22,9 +17,8 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
   citiesNames: string[] = [];
   showDropdown = false;
   citySub: Subscription;
-  ageOptions = ['Under 18', '18-25', '25-40', 'Over 40'];
+  ageOptions = AGE_OPTIONS;
   cities: City[] = (citiesJsonData as any).default;
-  @Output() eventEmitter = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -52,17 +46,12 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
   }
 
   initCitiesArray(): void {
-    this.citiesNames = this.cities.map((city) => {
-      return city.name;
-    });
+    this.citiesNames = this.cities.map(city => city.name);
   }
 
   toogleDropdown(): void {
-    this.citySub = this.autocompleteForm.get('city').valueChanges.subscribe(value => {
-      value.length > 2
-        ? this.showDropdown = true
-        : this.showDropdown = false;
-    });
+    this.citySub = this.autocompleteForm.get('city').valueChanges
+      .subscribe(value => this.showDropdown = value.length > 2);
   }
 
   getCityValue(): string {
@@ -85,7 +74,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
   }
 
   onSubmit(): void {
-    const resultArray: {title: string, value: any}[] = [
+    const resultArray: { title: string, value: any }[] = [
       {title: 'City', value: this.autocompleteForm.get('city').value},
       {title: 'Pick up date', value: this.autocompleteForm.get('pickUpDate').value},
       {title: 'Pick up time', value: this.autocompleteForm.get('pickUpTime').value},
