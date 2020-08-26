@@ -12,17 +12,16 @@ import {ModalService} from '../shared/modal/modal.service';
   templateUrl: './search-form.component.html',
   styleUrls: ['./search-form.component.less']
 })
-export class SearchFormComponent implements OnInit, OnDestroy {
+export class SearchFormComponent implements OnInit {
   placeholder = 'City';
   citiesNames: any[] = [];
   symbolsToShow = 3;
   customClass = '';
 
   autocompleteForm: FormGroup;
-  showDropdown = false;
-  citySub: Subscription;
   ageOptions = AGE_OPTIONS;
   cities: City[] = (citiesJsonData as any).default;
+  citiesResult: string;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -32,10 +31,6 @@ export class SearchFormComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.initForm();
     this.initCitiesArray();
-  }
-
-  ngOnDestroy(): void {
-    this.citySub.unsubscribe();
   }
 
   initForm(): void {
@@ -64,7 +59,7 @@ export class SearchFormComponent implements OnInit, OnDestroy {
 
   onSubmit(): void {
     const resultArray: { title: string, value: any }[] = [
-      // {title: 'City', value: this.autocompleteForm.get('city').value},
+      {title: this.placeholder, value: this.citiesResult},
       {title: 'Pick up date', value: this.autocompleteForm.get('pickUpDate').value},
       {title: 'Pick up time', value: this.autocompleteForm.get('pickUpTime').value},
       {title: 'Drop off date', value: this.autocompleteForm.get('dropOffDate').value},
@@ -73,5 +68,9 @@ export class SearchFormComponent implements OnInit, OnDestroy {
     ];
     this.modalService.modalData = resultArray;
     this.router.navigate(['result']);
+  }
+
+  getValue(value): void {
+    this.citiesResult = value;
   }
 }

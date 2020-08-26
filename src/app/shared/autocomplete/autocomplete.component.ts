@@ -12,6 +12,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
   @Input() sourceArray: any[];
   @Input() symbolsToShow: number;
   @Input() customClass: string;
+  @Output() resultValue = new EventEmitter<string>();
 
   autocompleteForm: FormGroup;
   showDropdown = false;
@@ -36,7 +37,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
 
   toogleDropdown(): void {
     this.citySub = this.autocompleteForm.get('autocompleteInput').valueChanges
-      .subscribe(value => this.showDropdown = value.length > 2);
+      .subscribe(value => this.showDropdown = value.length > this.symbolsToShow - 1);
   }
 
   getValue(): string {
@@ -47,5 +48,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
     this.autocompleteForm.get('autocompleteInput').setValue(value, {
       onlySelf: true
     });
+    this.showDropdown = false;
+    this.resultValue.emit(value);
   }
 }
