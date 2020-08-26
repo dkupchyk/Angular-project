@@ -9,7 +9,7 @@ import {Subscription} from 'rxjs';
 })
 export class AutocompleteComponent implements OnInit, OnDestroy {
   @Input() placeholder: string;
-  @Input() sourceArray: any[];
+  @Input() sourceArray: {title: string, value: any}[];
   @Input() symbolsToShow: number;
   @Input() customClass: string;
   @Output() resultValue = new EventEmitter<string>();

@@ -73,7 +73,10 @@ export class ContactComponent implements OnInit, OnDestroy {
       {title: 'Message', value: this.contactForm.get('message').value}
     ];
     if (this.contactForm.get('age')) {
-      resultArray.push({title: 'Age', value: this.contactForm.get('age').value});
+      resultArray.push({
+        title: 'Age',
+        value: this.contactForm.get('age').value
+      });
     }
     this.modalService.modalData = resultArray;
     this.router.navigate(['result']);

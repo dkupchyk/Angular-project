@@ -1,11 +1,12 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {ModalService} from './modal.service';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-modal',
   templateUrl: './modal.component.html',
-  styleUrls: ['./modal.component.less']
+  styleUrls: ['./modal.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent implements OnInit {
   result: { title: string, value: any }[];
