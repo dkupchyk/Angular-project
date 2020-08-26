@@ -6,26 +6,37 @@ import {OtherComponent} from './other/other.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../app-routing.module';
 import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
+import { AutocompleteComponent } from './autocomplete/autocomplete.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {SearchFilterPipe} from './pipes/search-filter.pipe';
+import { ModalComponent } from './modal/modal.component';
+import {ModalService} from './modal/modal.service';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     OtherComponent,
     ContactComponent,
-    SanitizeUrlPipe
+    AutocompleteComponent,
+    SanitizeUrlPipe,
+    SearchFilterPipe,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   exports: [
     HeaderComponent,
     OtherComponent,
     ContactComponent,
-    SanitizeUrlPipe
+    SanitizeUrlPipe,
+    SearchFilterPipe,
+    AutocompleteComponent
   ],
-  providers: []
+  providers: [ModalService]
 })
 export class SharedModule {
 }

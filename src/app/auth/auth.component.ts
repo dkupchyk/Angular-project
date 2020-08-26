@@ -30,6 +30,4 @@ export class AuthComponent implements OnInit {
   changeToSignUpView(): void {
     this.router.navigate(['sign-up']);
   }
-
-
 }

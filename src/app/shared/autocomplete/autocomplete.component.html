@@ -1,0 +1,20 @@
+<form class="autocomplete-form" [formGroup]="autocompleteForm">
+  <div class="form-group">
+    <label>{{settings.placeholder}}</label>
+    <input type="text"
+           class="form-control autocomplete-input {{settings.customClass}}"
+           formControlName="autocompleteInput"
+           (click)="toogleDropdown()"
+           autocomplete="off">
+    <div *ngIf="showDropdown" class="dropdown-container">
+      <div (click)="changeInput(item)" class="text"
+           *ngFor="let item of sourceArray | searchFilter: getValue()">
+        {{item}}
+      </div>
+    </div>
+    <span *ngIf="!autocompleteForm.get('autocompleteInput').valid && autocompleteForm.get('autocompleteInput').touched"
+          class="text-muted">
+        Please enter a city!
+      </span>
+  </div>
+</form>

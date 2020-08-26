@@ -1,7 +1,7 @@
 <div id="contact-section">
   <h3 class="title">{{contactSection.title}}</h3>
 
-  <form [formGroup]="contactForm">
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label>Full name</label>
       <input id="name"
@@ -70,37 +70,10 @@
     </div>
     <button type="submit"
             class="btn btn-danger"
-            [disabled]="!contactForm.valid"
-            data-toggle="modal"
-            data-target="#resultModal">
+            [disabled]="!contactForm.valid">
       Submit
     </button>
   </form>
-
-  <div class="modal fade"
-       id="resultModal"
-       tabindex="-1"
-       role="dialog"
-       aria-labelledby="resultModalLabel"
-       aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="resultModalLabel">Your data</h5>
-        </div>
-        <div class="modal-body">
-          <p>Full name: {{contactForm.get('name').value}}</p>
-          <p>Email: {{contactForm.get('email').value}}</p>
-          <p>Topic: {{contactForm.get('topic').value}}</p>
-          <p>Message: {{contactForm.get('message').value}}</p>
-          <p *ngIf="contactForm.get('checkAge').value">Age: {{contactForm.get('age').value}}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="resetForm()">Ok</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </div>
 
