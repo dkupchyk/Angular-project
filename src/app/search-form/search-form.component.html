@@ -2,10 +2,8 @@
 
   <form [formGroup]="autocompleteForm" (ngSubmit)="onSubmit()">
     <app-autocomplete
-      [placeholder]="placeholder"
+      [settings]="settings"
       [sourceArray]="citiesNames"
-      [customClass]="customClass"
-      [symbolsToShow]="symbolsToShow"
       (resultValue)="getValue($event)">
     </app-autocomplete>
 

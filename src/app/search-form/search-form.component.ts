@@ -1,11 +1,11 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {Subscription} from 'rxjs';
 import {AGE_OPTIONS} from '../shared/constants/autocomplete-form.constants';
-import {City} from '../shared/autocomplete/city.interface';
-import * as citiesJsonData from '../shared/constants/cities.constant.json';
+import {City} from '../shared/interfaces/city.interface';
 import {Router} from '@angular/router';
 import {ModalService} from '../shared/modal/modal.service';
+import {CITIES} from '../shared/constants/cities.constant';
+import {AutocompleteSettings} from '../shared/interfaces/autocomplete-settings.interface';
 
 @Component({
   selector: 'app-search-form',
@@ -13,15 +13,16 @@ import {ModalService} from '../shared/modal/modal.service';
   styleUrls: ['./search-form.component.less']
 })
 export class SearchFormComponent implements OnInit {
-  placeholder = 'City';
-  citiesNames: any[] = [];
-  symbolsToShow = 3;
-  customClass = '';
-
+  settings: AutocompleteSettings = {
+    placeholder: 'City',
+    symbolsToShow: 3,
+    customClass: ''
+  };
   autocompleteForm: FormGroup;
-  ageOptions = AGE_OPTIONS;
-  cities: City[] = (citiesJsonData as any).default;
+  cities: City[] = CITIES;
+  citiesNames: string[] = [];
   citiesResult: string;
+  ageOptions = AGE_OPTIONS;
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -59,7 +60,7 @@ export class SearchFormComponent implements OnInit {
 
   onSubmit(): void {
     const resultArray: { title: string, value: any }[] = [
-      {title: this.placeholder, value: this.citiesResult},
+      {title: this.settings.placeholder, value: this.citiesResult},
       {title: 'Pick up date', value: this.autocompleteForm.get('pickUpDate').value},
       {title: 'Pick up time', value: this.autocompleteForm.get('pickUpTime').value},
       {title: 'Drop off date', value: this.autocompleteForm.get('dropOffDate').value},

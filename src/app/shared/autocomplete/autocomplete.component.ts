@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
+import {AutocompleteSettings} from '../interfaces/autocomplete-settings.interface';
 
 @Component({
   selector: 'app-autocomplete',
@@ -8,10 +9,8 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./autocomplete.component.less']
 })
 export class AutocompleteComponent implements OnInit, OnDestroy {
-  @Input() placeholder: string;
+  @Input() settings: AutocompleteSettings;
   @Input() sourceArray: {title: string, value: any}[];
-  @Input() symbolsToShow: number;
-  @Input() customClass: string;
   @Output() resultValue = new EventEmitter<string>();
 
   autocompleteForm: FormGroup;
@@ -37,7 +36,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
 
   toogleDropdown(): void {
     this.subscription = this.autocompleteForm.get('autocompleteInput').valueChanges
-      .subscribe(value => this.showDropdown = value.length > this.symbolsToShow - 1);
+      .subscribe(value => this.showDropdown = value.length > this.settings.symbolsToShow - 1);
   }
 
   getValue(): string {
