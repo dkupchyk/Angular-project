@@ -1,15 +1,13 @@
 <div class="autocomplete-section">
 
   <form [formGroup]="autocompleteForm" (ngSubmit)="onSubmit()">
-    <div class="autocomplete-row">
-      <app-autocomplete
-        [placeholder]="placeholder"
-        [sourceArray]="citiesNames"
-        [customClass]="customClass"
-        [symbolsToShow]="symbolsToShow"
-        (resultValue)="getValue($event)"
-      ></app-autocomplete>
-    </div>
+    <app-autocomplete
+      [placeholder]="placeholder"
+      [sourceArray]="citiesNames"
+      [customClass]="customClass"
+      [symbolsToShow]="symbolsToShow"
+      (resultValue)="getValue($event)">
+    </app-autocomplete>
 
     <div class="autocomplete-row">
       <div class="form-group autocomplete-col">

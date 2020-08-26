@@ -16,7 +16,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
 
   autocompleteForm: FormGroup;
   showDropdown = false;
-  citySub: Subscription;
+  subscription: Subscription;
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -26,7 +26,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.citySub.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   initForm(): void {
@@ -36,7 +36,7 @@ export class AutocompleteComponent implements OnInit, OnDestroy {
   }
 
   toogleDropdown(): void {
-    this.citySub = this.autocompleteForm.get('autocompleteInput').valueChanges
+    this.subscription = this.autocompleteForm.get('autocompleteInput').valueChanges
       .subscribe(value => this.showDropdown = value.length > this.symbolsToShow - 1);
   }
 

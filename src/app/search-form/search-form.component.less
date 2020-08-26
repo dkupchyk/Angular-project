@@ -1,16 +1,12 @@
 @import '../variables.less';
 
 .autocomplete-section {
+  position: relative;
   width: 450px;
   margin: 5% auto;
+  padding: 2%;
   border: 2px solid @primary-red-color;
   border-radius: 20px;
-  padding: 2%;
-  position: relative;
-
-  .form-group {
-    margin-right: 3%;
-  }
 
   .search-button {
     margin: 5% 0;
@@ -21,7 +17,6 @@
 .autocomplete-row {
   display: flex;
   position: relative;
-  margin: 3%;
 
   & .autocomplete-col {
     display: block;
@@ -29,6 +24,7 @@
     & .pickUpTime,
     & .dropOffTime {
       width: 100%;
+      margin-left: 10px;
     }
   }
 }
