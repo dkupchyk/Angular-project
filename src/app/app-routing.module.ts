@@ -9,6 +9,7 @@ import {AuthComponent} from './auth/auth.component';
 import {SignUpComponent} from './auth/sign-up/sign-up.component';
 import {AutocompleteComponent} from './shared/autocomplete/autocomplete.component';
 import {ModalComponent} from './shared/modal/modal.component';
+import {SearchFormComponent} from './search-form/search-form.component';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,7 +23,7 @@ const appRoutes: Routes = [
   {path: 'section2', component: SubjectsTestingComponent},
   {path: 'section3', component: SubjectsTestingComponent},
   {path: 'subjects', component: SubjectsTestingComponent},
-  {path: 'autocomplete', component: AutocompleteComponent},
+  {path: 'autocomplete-testing', component: SearchFormComponent},
   {path: 'result', component: ModalComponent}
 
 ];

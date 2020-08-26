@@ -19,12 +19,14 @@ import {AuthModule} from './auth/auth.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
+import { SearchFormComponent } from './search-form/search-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SubjectsTestingComponent,
-    AboutComponent
+    AboutComponent,
+    SearchFormComponent
   ],
   imports: [
     BrowserModule,

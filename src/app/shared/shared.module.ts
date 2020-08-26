@@ -33,7 +33,8 @@ import {ModalService} from './modal/modal.service';
     OtherComponent,
     ContactComponent,
     SanitizeUrlPipe,
-    SearchFilterPipe
+    SearchFilterPipe,
+    AutocompleteComponent
   ],
   providers: [ModalService]
 })
