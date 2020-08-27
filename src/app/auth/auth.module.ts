@@ -9,6 +9,7 @@ import {AuthService} from './auth.service';
 import {NameSectionComponent} from './sign-up/stepper/name-section/name-section.component';
 import {BirthdaySectionComponent} from './sign-up/stepper/birthday-section/birthday-section.component';
 import {EmailPasswordSectionComponent} from './sign-up/stepper/email-password-section/email-password-section.component';
+import {AuthGuard} from './auth.guard';
 
 @NgModule({
   declarations: [
