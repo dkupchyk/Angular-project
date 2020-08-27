@@ -11,6 +11,7 @@ import {AutocompleteComponent} from './shared/autocomplete/autocomplete.componen
 import {ModalComponent} from './shared/modal/modal.component';
 import {SearchFormComponent} from './search-form/search-form.component';
 import {AuthGuard} from './auth/auth.guard';
+import {ReassuranceGuard} from './shared/reassurance.guard';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,7 +25,7 @@ const appRoutes: Routes = [
   {path: 'section2', component: SubjectsTestingComponent},
   {path: 'section3', component: SubjectsTestingComponent},
   {path: 'subjects', component: SubjectsTestingComponent},
-  {path: 'autocomplete-testing', component: SearchFormComponent},
+  {path: 'autocomplete-testing', component: SearchFormComponent, canActivate: [ReassuranceGuard]},
   {path: 'result', component: ModalComponent}
 
 ];
