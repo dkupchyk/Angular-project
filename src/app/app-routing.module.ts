@@ -10,13 +10,14 @@ import {SignUpComponent} from './auth/sign-up/sign-up.component';
 import {AutocompleteComponent} from './shared/autocomplete/autocomplete.component';
 import {ModalComponent} from './shared/modal/modal.component';
 import {SearchFormComponent} from './search-form/search-form.component';
+import {AuthGuard} from './auth/auth.guard';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'home', component: HomeComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'contact', component: ContactComponent},
-  {path: 'users', component: UsersComponent},
+  {path: 'about', component: AboutComponent, canActivate: [AuthGuard]},
+  {path: 'contact', component: ContactComponent, canActivate: [AuthGuard]},
+  {path: 'users', component: UsersComponent, canActivate: [AuthGuard]},
   {path: 'log-in', component: AuthComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'section1', component: SubjectsTestingComponent},
