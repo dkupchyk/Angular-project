@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../auth.service';
 import {Store} from '@ngrx/store';
@@ -33,5 +33,4 @@ export class BirthdaySectionComponent implements OnInit {
     this.signUpComponent.sendData('dateOfBirth', form.value.dateOfBirth);
     this.store.dispatch(new SignUpActions.IncreaseSection());
   }
-
 }
