@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../auth.service';
 import {Store} from '@ngrx/store';
 import {SignUpComponent} from '../../sign-up.component';
 import * as fromApp from '../../../../store/app.reducer';
 import * as SignUpActions from '../../store/sign-up.actions';
+import {ValidateDate} from '../../../../shared/constants/validators.constant';
 
 @Component({
   selector: 'app-birthday-section',
@@ -24,7 +25,7 @@ export class BirthdaySectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
-      dateOfBirth: ['', Validators.required]
+      dateOfBirth: ['', [Validators.required, ValidateDate(Date.now())]]
     });
   }
 
@@ -32,4 +33,5 @@ export class BirthdaySectionComponent implements OnInit {
     this.signUpComponent.sendData('dateOfBirth', form.value.dateOfBirth);
     this.store.dispatch(new SignUpActions.IncreaseSection());
   }
+
 }
