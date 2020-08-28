@@ -11,6 +11,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import {SearchFilterPipe} from './pipes/search-filter.pipe';
 import { ModalComponent } from './modal/modal.component';
 import {ModalService} from './modal/modal.service';
+import {ItemsStyleDirective} from './autocomplete/items-style.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {ModalService} from './modal/modal.service';
     AutocompleteComponent,
     SanitizeUrlPipe,
     SearchFilterPipe,
-    ModalComponent
+    ModalComponent,
+    ItemsStyleDirective
   ],
   imports: [
     BrowserModule,

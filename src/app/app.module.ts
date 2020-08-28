@@ -20,6 +20,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { ItemsStyleDirective } from './shared/autocomplete/items-style.directive';
 
 @NgModule({
   declarations: [
