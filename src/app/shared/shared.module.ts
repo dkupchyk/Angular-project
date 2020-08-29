@@ -12,6 +12,7 @@ import {SearchFilterPipe} from './pipes/search-filter.pipe';
 import { ModalComponent } from './modal/modal.component';
 import {ModalService} from './modal/modal.service';
 import {ItemsStyleDirective} from './autocomplete/items-style.directive';
+import { InvalidFormInputComponent } from './invalid-form-input/invalid-form-input.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {ItemsStyleDirective} from './autocomplete/items-style.directive';
     SanitizeUrlPipe,
     SearchFilterPipe,
     ModalComponent,
-    ItemsStyleDirective
+    ItemsStyleDirective,
+    InvalidFormInputComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import {ItemsStyleDirective} from './autocomplete/items-style.directive';
     ContactComponent,
     SanitizeUrlPipe,
     SearchFilterPipe,
-    AutocompleteComponent
+    AutocompleteComponent,
+    InvalidFormInputComponent
   ],
   providers: [ModalService]
 })

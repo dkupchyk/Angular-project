@@ -1,1 +1,99 @@
-<p>work-application works!</p>
+<div class="application-form">
+  <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label>Full name:</label>
+      <input
+        id="fullName"
+        type="text"
+        class="form-control"
+        formControlName="fullName">
+      <app-invalid-form-input
+        [formName]="applicationForm"
+        [inputProperty]="'fullName'"
+        [message]="'Please enter your full name!'">
+      </app-invalid-form-input>
+    </div>
+
+    <div class="form-group">
+      <div class="custom-row">
+        <div class="custom-col">
+          <label>Date of birth:</label>
+          <input
+            id="dateOfBirth"
+            type="date"
+            class="form-control"
+            formControlName="dateOfBirth">
+          <app-invalid-form-input
+            [formName]="applicationForm"
+            [inputProperty]="'dateOfBirth'"
+            [message]="'Please enter a valid date of birth!'">
+          </app-invalid-form-input>
+        </div>
+        <div class="custom-col col-to-right">
+          <label>Phone number:</label>
+          <input
+            id="phoneNumber"
+            type="text"
+            class="form-control"
+            formControlName="phoneNumber">
+          <app-invalid-form-input
+            [formName]="applicationForm"
+            [inputProperty]="'phoneNumber'"
+            [message]="'Please enter valid phone number!'">
+          </app-invalid-form-input>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="custom-row">
+        <div class="custom-col">
+          <label>Marital status:</label>
+          <input
+            id="maritalStatus"
+            type="text"
+            class="form-control"
+            formControlName="maritalStatus">
+        </div>
+        <div class="custom-col col-to-right">
+          <label>Email:</label>
+          <input
+            id="email"
+            type="text"
+            class="form-control"
+            formControlName="email">
+          <app-invalid-form-input
+            [formName]="applicationForm"
+            [inputProperty]="'email'"
+            [message]="'Please enter valid email address!'">
+          </app-invalid-form-input>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Address:</label>
+      <input
+        id="address"
+        type="text"
+        class="form-control"
+        formControlName="address">
+      <app-invalid-form-input
+        [formName]="applicationForm"
+        [inputProperty]="'address'"
+        [message]="'Please enter your address!'">
+      </app-invalid-form-input>
+    </div>
+
+    <div class="form-group">
+      <label>Position:</label>
+      <input
+        id="position"
+        type="text"
+        class="form-control"
+        formControlName="position">
+    </div>
+
+  </form>
+</div>
