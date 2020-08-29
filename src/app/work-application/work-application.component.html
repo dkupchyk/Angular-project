@@ -1,6 +1,8 @@
 <div class="application-form">
   <form [formGroup]="applicationForm" (ngSubmit)="onSubmit()">
 
+    <h3 class="heading">Personal information</h3>
+
     <div class="form-group">
       <label>Full name:</label>
       <input
@@ -53,7 +55,7 @@
           <select
             class="form-control"
             (change)="changeValue($event, 'maritalStatus')"
-                  formControlName="maritalStatus">
+            formControlName="maritalStatus">
             <option value="" disabled>Choose your marital status</option>
             <option *ngFor="let maritalStatus of maritalStatusOptions"
                     [ngValue]="maritalStatus">
@@ -103,6 +105,59 @@
           {{position}}
         </option>
       </select>
+    </div>
+
+    <h3 class="heading">Education</h3>
+
+    <app-autocomplete
+      [settings]="settings"
+      [sourceArray]="educationCenters"
+      (resultValue)="getValue($event)">
+    </app-autocomplete>
+
+    <div class="form-group">
+      <div class="custom-row">
+        <div class="custom-col">
+          <label>Entry year</label>
+          <select
+            class="form-control"
+            (change)="changeValue($event, 'entryYear')"
+            formControlName="entryYear">
+            <option value="" disabled>Choose entry year</option>
+            <option *ngFor="let year of entryYears"
+                    [ngValue]="year">
+              {{year}}
+            </option>
+          </select>
+        </div>
+        <div class="custom-col col-to-right">
+          <label>Finish year</label>
+          <select
+            class="form-control select-year"
+            (change)="changeValue($event, 'finishYear')"
+            formControlName="finishYear">
+            <option value="" disabled>Choose leave year</option>
+            <option *ngFor="let year of finishYears"
+                    [ngValue]="year">
+              {{year}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Degree:</label>
+      <input
+        id="degree"
+        type="text"
+        class="form-control"
+        formControlName="degree">
+      <app-invalid-form-input
+        [formName]="applicationForm"
+        [inputProperty]="'degree'"
+        [message]="'Please enter your degree!'">
+      </app-invalid-form-input>
     </div>
 
   </form>
