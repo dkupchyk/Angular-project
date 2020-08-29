@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ValidateDate} from '../shared/constants/validators.constant';
-import {PHONE_NUMBERS, POSITIVE_NUMBERS} from '../shared/constants/patterns.constant';
-import {EDUCATION_CENTERS, MARITAL_STATUS_OPTIONS, POSITION_OPTIONS, YEARS} from '../shared/constants/work-application-form.constants';
 import {AutocompleteSettings} from '../shared/interfaces/autocomplete-settings.interface';
+import {ValidateDate} from '../shared/constants/validators.constant';
+import {PHONE_NUMBERS} from '../shared/constants/patterns.constant';
+import {EDUCATION_CENTERS, MARITAL_STATUS_OPTIONS, POSITION_OPTIONS, YEARS} from '../shared/constants/work-application-form.constants';
 
 @Component({
   selector: 'app-work-application',
@@ -11,7 +11,6 @@ import {AutocompleteSettings} from '../shared/interfaces/autocomplete-settings.i
   styleUrls: ['./work-application.component.less']
 })
 export class WorkApplicationComponent implements OnInit {
-
   applicationForm: FormGroup;
 
   maritalStatusOptions = MARITAL_STATUS_OPTIONS;
@@ -60,7 +59,5 @@ export class WorkApplicationComponent implements OnInit {
     this.educationCenter = value;
   }
 
-  onSubmit(): void {
-
-  }
+  onSubmit(): void {}
 }
