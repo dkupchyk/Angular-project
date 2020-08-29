@@ -50,11 +50,16 @@
       <div class="custom-row">
         <div class="custom-col">
           <label>Marital status:</label>
-          <input
-            id="maritalStatus"
-            type="text"
+          <select
             class="form-control"
-            formControlName="maritalStatus">
+            (change)="changeValue($event, 'maritalStatus')"
+                  formControlName="maritalStatus">
+            <option value="" disabled>Choose your marital status</option>
+            <option *ngFor="let maritalStatus of maritalStatusOptions"
+                    [ngValue]="maritalStatus">
+              {{maritalStatus}}
+            </option>
+          </select>
         </div>
         <div class="custom-col col-to-right">
           <label>Email:</label>
@@ -88,11 +93,16 @@
 
     <div class="form-group">
       <label>Position:</label>
-      <input
-        id="position"
-        type="text"
+      <select
         class="form-control"
+        (change)="changeValue($event, 'position')"
         formControlName="position">
+        <option value="" disabled>Choose your position</option>
+        <option *ngFor="let position of positionOptions"
+                [ngValue]="position">
+          {{position}}
+        </option>
+      </select>
     </div>
 
   </form>

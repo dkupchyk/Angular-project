@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ValidateDate} from '../shared/constants/validators.constant';
+import {PHONE_NUMBERS, POSITIVE_NUMBERS} from '../shared/constants/patterns.constant';
+import {MARITAL_STATUS_OPTIONS, POSITION_OPTIONS} from '../shared/constants/work-application-form.constants';
 
 @Component({
   selector: 'app-work-application',
@@ -10,6 +12,8 @@ import {ValidateDate} from '../shared/constants/validators.constant';
 export class WorkApplicationComponent implements OnInit {
 
   applicationForm: FormGroup;
+  maritalStatusOptions = MARITAL_STATUS_OPTIONS;
+  positionOptions = POSITION_OPTIONS;
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -22,12 +26,17 @@ export class WorkApplicationComponent implements OnInit {
     this.applicationForm = this.formBuilder.group({
       fullName: ['', Validators.required],
       dateOfBirth: ['', [Validators.required, ValidateDate(Date.now())]],
-      phoneNumber: ['', Validators.required],
+      phoneNumber: ['', [Validators.required, Validators.pattern(PHONE_NUMBERS)]],
       address: ['', Validators.required],
       maritalStatus:  ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       position: ['', Validators.required],
+    });
+  }
 
+  changeValue(e, propertyName: string): void {
+    this.applicationForm.get(propertyName).setValue(e.target.value, {
+      onlySelf: true
     });
   }
 
