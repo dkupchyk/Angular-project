@@ -21,13 +21,15 @@ import { environment } from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { ItemsStyleDirective } from './shared/autocomplete/items-style.directive';
+import { WorkApplicationComponent } from './work-application/work-application.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SubjectsTestingComponent,
     AboutComponent,
-    SearchFormComponent
+    SearchFormComponent,
+    WorkApplicationComponent
   ],
   imports: [
     BrowserModule,

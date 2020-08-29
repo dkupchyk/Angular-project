@@ -11,7 +11,7 @@ export class ItemsStyleDirective {
     element.nativeElement.style.fontWeight = 500;
   }
 
-  @HostListener('mouseover') onHover() {
+  @HostListener('mouseover') onHover(): void {
     this.element.nativeElement.style.backgroundColor = 'lightgray';
   }
 }
