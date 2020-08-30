@@ -22,6 +22,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { SearchFormComponent } from './search-form/search-form.component';
 import { ItemsStyleDirective } from './shared/autocomplete/items-style.directive';
 import { WorkApplicationComponent } from './work-application/work-application.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { WorkApplicationComponent } from './work-application/work-application.co
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [SubjectsTestingService, SectionService],
   bootstrap: [AppComponent]
