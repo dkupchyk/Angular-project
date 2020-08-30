@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AutocompleteSettings} from '../shared/interfaces/autocomplete-settings.interface';
-import {ValidateDate} from '../shared/constants/validators.constant';
-import {PHONE_NUMBERS} from '../shared/constants/patterns.constant';
-import {EDUCATION_CENTERS, MARITAL_STATUS_OPTIONS, POSITION_OPTIONS, YEARS} from '../shared/constants/work-application-form.constants';
+import {FormBuilder, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
-import {SectionService} from '../section/section.service';
+
+import {AutocompleteSettings} from '../shared/interfaces/autocomplete-settings.interface';
 import {ModalService} from '../shared/modal/modal.service';
+import {ApplicationFormControl} from '../shared/interfaces/application-form-control.interface';
+import {EDUCATION_CONTROLS, PERSONAL_INFO_CONTROLS, WORK_EXP_CONTROLS} from './constants/form-controls.constants';
+import {EDUCATION_CENTERS, MARITAL_STATUS_OPTIONS, POSITION_OPTIONS, YEARS} from '../shared/constants/work-application-form.constants';
 
 @Component({
   selector: 'app-work-application',
@@ -31,6 +31,8 @@ export class WorkApplicationComponent implements OnInit {
   educationCenter: string;
   years: string[] = YEARS;
 
+  resultArray: { title: string, value: any }[] = [];
+
   constructor(private formBuilder: FormBuilder,
               private router: Router,
               private modalService: ModalService) {
@@ -42,43 +44,18 @@ export class WorkApplicationComponent implements OnInit {
 
   initializeForm(): void {
     this.applicationForm = this.formBuilder.group({
-      personalInfo: this.initPersonalInfoGroup(),
-      education: this.initEducationGroup(),
-      workingExperience: this.initWorkingExperienceGroup()
+      personalInfo: this.initFormGroup(this.personalInfoGroup, PERSONAL_INFO_CONTROLS),
+      education: this.initFormGroup(this.educationGroup, EDUCATION_CONTROLS),
+      workingExperience: this.initFormGroup(this.workingExperienceGroup, WORK_EXP_CONTROLS)
     });
   }
 
-  initPersonalInfoGroup(): FormGroup {
-    this.personalInfoGroup = this.formBuilder.group({
-      fullName: ['', Validators.required],
-      dateOfBirth: ['', [Validators.required, ValidateDate(Date.now())]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(PHONE_NUMBERS)]],
-      address: ['', Validators.required],
-      maritalStatus: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      position: ['', Validators.required]
+  initFormGroup(groupName: FormGroup, groupControls: ApplicationFormControl[]): FormGroup {
+    groupName = this.formBuilder.group({});
+    groupControls.forEach(control => {
+      groupName.addControl(control.propertyName, this.formBuilder.control('', control.validators));
     });
-    return this.personalInfoGroup;
-  }
-
-  initEducationGroup(): FormGroup {
-    this.educationGroup = this.formBuilder.group({
-      entryYear: ['', Validators.required],
-      finishYear: ['', Validators.required],
-      degree: ['', Validators.required]
-    });
-    return this.educationGroup;
-  }
-
-  initWorkingExperienceGroup(): FormGroup {
-    this.workingExperienceGroup = this.formBuilder.group({
-      lastWorkingPlace: ['', Validators.required],
-      lastPosition: ['', Validators.required],
-      startWorkingYear: ['', Validators.required],
-      endWorkingYear: ['', Validators.required],
-      reasonForLeaving: ['', Validators.required]
-    });
-    return this.workingExperienceGroup;
+    return groupName;
   }
 
   getValue(value): void {
@@ -86,53 +63,21 @@ export class WorkApplicationComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const resultArray: { title: string, value: any }[] = [];
-    this.getPersonalData().forEach(control => {
-      resultArray.push(control);
-    });
+    this.getData(PERSONAL_INFO_CONTROLS, 'personalInfo');
+    this.resultArray.push({title: 'Educational center', value: this.educationCenter});
+    this.getData(EDUCATION_CONTROLS, 'education');
+    this.getData(WORK_EXP_CONTROLS, 'workingExperience');
 
-    this.modalService.modalData = resultArray;
+    this.modalService.modalData = this.resultArray;
     this.router.navigate(['result']);
   }
 
-  getPersonalData(): { title: string, value: any }[] {
-    return [
-      {
-        title: 'Full name',
-        value: this.applicationForm.get('personalInfo').get('fullName').value
-      },
-      {
-        title: 'Date of birth',
-        value: this.applicationForm.get('personalInfo').get('dateOfBirth').value
-      },
-      {
-        title: 'Phone number',
-        value: this.applicationForm.get('personalInfo').get('phoneNumber').value
-      },
-      {
-        title: 'Address',
-        value: this.applicationForm.get('personalInfo').get('address').value
-      },
-      {
-        title: 'Marital status',
-        value: this.applicationForm.get('personalInfo').get('maritalStatus').value
-      },
-      {
-        title: 'Email',
-        value: this.applicationForm.get('personalInfo').get('email').value
-      },
-      {
-        title: 'Position',
-        value: this.applicationForm.get('personalInfo').get('position').value
-      }
-    ];
-  }
-
-  getAllData(): { title: string, value: any }[] {
-    return [
-      {title: 'Personal information', value: this.applicationForm.get('personalInfo').value},
-      {title: 'Education', value: this.applicationForm.get('education').value},
-      {title: 'Working experience', value: this.applicationForm.get('workingExperience').value}
-    ];
+  getData(controls: { title: string, propertyName: any }[], groupName: string): void {
+    controls.forEach(control => {
+      this.resultArray.push({
+        title: control.title,
+        value: this.applicationForm.get(groupName).get(control.propertyName).value
+      });
+    });
   }
 }
