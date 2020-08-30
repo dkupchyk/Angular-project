@@ -23,9 +23,7 @@ export class WorkApplicationComponent implements OnInit {
 
   educationCenters: string[] = EDUCATION_CENTERS;
   educationCenter: string;
-
-  entryYears: string[] = YEARS;
-  finishYears: string[] = YEARS;
+  years: string[] = YEARS;
 
   constructor(private formBuilder: FormBuilder) {
   }
@@ -43,9 +41,16 @@ export class WorkApplicationComponent implements OnInit {
       maritalStatus: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       position: ['', Validators.required],
+
       entryYear: ['', Validators.required],
       finishYear: ['', Validators.required],
       degree: ['', Validators.required],
+
+      lastWorkingPlace: ['', Validators.required],
+      lastPosition: ['', Validators.required],
+      startWorkingYear: ['', Validators.required],
+      endWorkingYear: ['', Validators.required],
+      reasonForLeaving: ['', Validators.required]
     });
   }
 
