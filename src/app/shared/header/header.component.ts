@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     {link: 'about', title: 'About', visible: false},
     {link: 'contact', title: 'Contact', visible: false},
     {link: 'users', title: 'Users', visible: false},
-    {link: 'log-in', title: 'Authorization', visible: true}
+    {link: 'auth', title: 'Authorization', visible: true}
   ];
   userSub = new Subscription();
 

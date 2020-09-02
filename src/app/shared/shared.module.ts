@@ -13,6 +13,7 @@ import { ModalComponent } from './modal/modal.component';
 import {ModalService} from './modal/modal.service';
 import {ItemsStyleDirective} from './autocomplete/items-style.directive';
 import { InvalidFormInputComponent } from './invalid-form-input/invalid-form-input.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,9 @@ import { InvalidFormInputComponent } from './invalid-form-input/invalid-form-inp
     InvalidFormInputComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     ReactiveFormsModule,
-    AppRoutingModule,
+    // AppRoutingModule,
     HttpClientModule,
   ],
   exports: [

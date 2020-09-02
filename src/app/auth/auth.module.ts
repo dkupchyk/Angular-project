@@ -9,7 +9,8 @@ import {AuthService} from './auth.service';
 import {NameSectionComponent} from './sign-up/stepper/name-section/name-section.component';
 import {BirthdaySectionComponent} from './sign-up/stepper/birthday-section/birthday-section.component';
 import {EmailPasswordSectionComponent} from './sign-up/stepper/email-password-section/email-password-section.component';
-import {AuthGuard} from './auth.guard';
+import {AuthRoutingModule} from './auth-routing.module';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -20,10 +21,10 @@ import {AuthGuard} from './auth.guard';
     EmailPasswordSectionComponent
   ],
   imports: [
-    BrowserModule,
+    CommonModule,
     ReactiveFormsModule,
-    AppRoutingModule,
-    SharedModule
+    SharedModule,
+    AuthRoutingModule
   ],
   exports: [
     AuthComponent,
