@@ -2,6 +2,7 @@
 
   <form [formGroup]="autocompleteForm" (ngSubmit)="onSubmit()">
     <app-autocomplete
+      appItemsStyle
       [settings]="settings"
       [sourceArray]="citiesNames"
       (resultValue)="getValue($event)">

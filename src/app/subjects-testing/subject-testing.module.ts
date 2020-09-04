@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {AuthRoutingModule} from '../auth/auth-routing.module';
 import {SubjectsTestingComponent} from './subjects-testing.component';
 import {SubjectsTestingService} from './subjects-testing.service';
 import {SharedModule} from '../shared/shared.module';

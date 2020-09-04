@@ -19,17 +19,17 @@ export class WorkApplicationComponent implements OnInit {
   educationGroup: FormGroup;
   workingExperienceGroup: FormGroup;
 
-  maritalStatusOptions = MARITAL_STATUS_OPTIONS;
-  positionOptions = POSITION_OPTIONS;
+  maritalStatusOptions = this.maritalStatusOptionsConst;
+  positionOptions = this.positionOptionsConst;
   settings: AutocompleteSettings = {
     placeholder: 'Name',
     symbolsToShow: 1,
     customClass: ''
   };
 
-  educationCenters: string[] = EDUCATION_CENTERS;
+  educationCenters: string[] = this.educationalCentersConst;
   educationCenter: string;
-  years: string[] = YEARS;
+  years: string[] = this.yearsConst;
 
   resultArray: { title: string, value: any }[] = [];
 
@@ -79,6 +79,22 @@ export class WorkApplicationComponent implements OnInit {
         value: this.applicationForm.get(groupName).get(control.propertyName).value
       });
     });
+  }
+
+  get maritalStatusOptionsConst(): string[] {
+    return MARITAL_STATUS_OPTIONS;
+  }
+
+  get positionOptionsConst(): string[] {
+    return POSITION_OPTIONS;
+  }
+
+  get yearsConst(): string[] {
+    return YEARS;
+  }
+
+  get educationalCentersConst(): string[] {
+    return EDUCATION_CENTERS;
   }
 
 }

@@ -15,10 +15,12 @@ export class InvalidFormInputComponent implements OnInit {
   formPath: FormGroup;
 
   ngOnInit(): void {
-    this.formPath = this.formName[0];
-    for (let i = 1; i < this.formName.length; i++) {
-      this.formPath.get(this.formName[i].toString());
+    if (this.formName) {
+      this.formPath = this.formName[0];
+      for (let i = 1; i < this.formName.length; i++) {
+        this.formPath.get(this.formName[i].toString());
+      }
+      this.formPath.get(this.inputProperty);
     }
-    this.formPath.get(this.inputProperty);
   }
 }

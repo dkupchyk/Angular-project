@@ -17,6 +17,3 @@ const appRoutes: Routes = [
 })
 export class WorkingApplicationRoutingModule {
 }
-
-
-

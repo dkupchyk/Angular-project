@@ -2,7 +2,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {NgModule} from '@angular/core';
 import {SubjectsTestingComponent} from './subjects-testing.component';
 
-
 const appRoutes: Routes = [
   {
     path: '',
@@ -31,6 +30,3 @@ const appRoutes: Routes = [
 })
 export class SubjectTestingRoutingModule {
 }
-
-
-

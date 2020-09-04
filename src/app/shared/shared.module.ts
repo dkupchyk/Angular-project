@@ -1,19 +1,19 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import {ContactComponent} from './contact/contact.component';
 import {OtherComponent} from './other/other.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../app-routing.module';
-import { SanitizeUrlPipe } from './pipes/sanitize-url.pipe';
-import { AutocompleteComponent } from './autocomplete/autocomplete.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {SanitizeUrlPipe} from './pipes/sanitize-url.pipe';
+import {AutocompleteComponent} from './autocomplete/autocomplete.component';
+import {HttpClientModule} from '@angular/common/http';
 import {SearchFilterPipe} from './pipes/search-filter.pipe';
-import { ModalComponent } from './modal/modal.component';
+import {ModalComponent} from './modal/modal.component';
 import {ModalService} from './modal/modal.service';
 import {ItemsStyleDirective} from './autocomplete/items-style.directive';
-import { InvalidFormInputComponent } from './invalid-form-input/invalid-form-input.component';
+import {InvalidFormInputComponent} from './invalid-form-input/invalid-form-input.component';
 import {CommonModule} from '@angular/common';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -30,8 +30,9 @@ import {CommonModule} from '@angular/common';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    // AppRoutingModule,
     HttpClientModule,
+    RouterModule,
+    AppRoutingModule
   ],
   exports: [
     HeaderComponent,
@@ -40,7 +41,8 @@ import {CommonModule} from '@angular/common';
     SanitizeUrlPipe,
     SearchFilterPipe,
     AutocompleteComponent,
-    InvalidFormInputComponent
+    InvalidFormInputComponent,
+    ItemsStyleDirective
   ],
   providers: [ModalService]
 })

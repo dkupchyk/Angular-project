@@ -1,5 +1,6 @@
 import {Directive, ElementRef, HostListener} from '@angular/core';
 import '../../variables.less';
+import {COLOR_BLACK, COLOR_LIGHTGRAY, COLOR_TRANSPARENT, FONT_WEIGHT_500} from './constants/item-style.constants';
 
 @Directive({
   selector: '[appItemsStyle]'
@@ -7,15 +8,21 @@ import '../../variables.less';
 export class ItemsStyleDirective {
 
   constructor(public element: ElementRef) {
-    element.nativeElement.style.color = '#F40009';
-    element.nativeElement.style.fontWeight = 500;
+    if (element.nativeElement) {
+      element.nativeElement.style.color = COLOR_BLACK;
+      element.nativeElement.style.fontWeight = FONT_WEIGHT_500;
+    }
   }
 
   @HostListener('mouseover') onMouseOver(): void {
-    this.element.nativeElement.style.backgroundColor = 'lightgray';
+    if (this.element.nativeElement) {
+      this.element.nativeElement.style.backgroundColor = COLOR_LIGHTGRAY;
+    }
   }
 
   @HostListener('mouseout') onMouseOut(): void {
-    this.element.nativeElement.style.backgroundColor = 'Transparent';
+    if (this.element.nativeElement) {
+      this.element.nativeElement.style.backgroundColor = COLOR_TRANSPARENT;
+    }
   }
 }
