@@ -9,12 +9,13 @@ import {Subscription} from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   links = [
-    {link: 'home', title: 'Home', visible: true},
-    {link: 'autocomplete-testing', title: 'Autocomplete', visible: true},
-    {link: 'about', title: 'About', visible: false},
-    {link: 'contact', title: 'Contact', visible: false},
-    {link: 'users', title: 'Users', visible: false},
-    {link: 'log-in', title: 'Authorization', visible: true}
+    {link: '/home', title: 'Home', visible: true},
+    {link: '/autocomplete-testing', title: 'Autocomplete', visible: true},
+    {link: '/working-application', title: 'Apply', visible: true},
+    {link: '/about', title: 'About', visible: false},
+    {link: '/contact', title: 'Contact', visible: false},
+    {link: '/users', title: 'Users', visible: false},
+    {link: '/auth', title: 'Authorization', visible: true}
   ];
   userSub = new Subscription();
 

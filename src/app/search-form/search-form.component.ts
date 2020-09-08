@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {AGE_OPTIONS} from '../shared/constants/autocomplete-form.constants';
-import {City} from '../shared/interfaces/city.interface';
 import {Router} from '@angular/router';
+import {City} from '../shared/interfaces/city.interface';
 import {ModalService} from '../shared/modal/modal.service';
-import {CITIES} from '../shared/constants/cities.constant';
 import {AutocompleteSettings} from '../shared/interfaces/autocomplete-settings.interface';
+import {CITIES} from '../shared/constants/cities.constant';
+import {AGE_OPTIONS} from '../shared/constants/autocomplete-form.constants';
 
 @Component({
   selector: 'app-search-form',

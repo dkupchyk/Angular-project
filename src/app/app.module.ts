@@ -20,13 +20,17 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {HttpClientModule} from '@angular/common/http';
 import { SearchFormComponent } from './search-form/search-form.component';
+import { ItemsStyleDirective } from './shared/autocomplete/items-style.directive';
+import { WorkApplicationComponent } from './work-application/work-application.component';
+import {CommonModule} from '@angular/common';
+import {SubjectTestingModule} from './subjects-testing/subject-testing.module';
+import {WorkingApplicationModule} from './work-application/working-application.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SubjectsTestingComponent,
     AboutComponent,
-    SearchFormComponent
+    SearchFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,12 +39,14 @@ import { SearchFormComponent } from './search-form/search-form.component';
     UsersModule,
     SharedModule,
     AuthModule,
+    WorkingApplicationModule,
+    SubjectTestingModule,
     ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(fromApp.appReducer),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
-  providers: [SubjectsTestingService, SectionService],
+  providers: [SectionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

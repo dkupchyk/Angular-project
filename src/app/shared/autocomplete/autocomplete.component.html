@@ -7,7 +7,9 @@
            (click)="toogleDropdown()"
            autocomplete="off">
     <div *ngIf="showDropdown" class="dropdown-container">
-      <div (click)="changeInput(item)" class="text"
+      <div appItemsStyle
+           (click)="changeInput(item)"
+           class="text"
            *ngFor="let item of sourceArray | searchFilter: getValue()">
         {{item}}
       </div>
